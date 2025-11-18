@@ -7,6 +7,7 @@ local refresh = layers.CreateModeGroup('Refresh', {'Off', 'Refresh'})
 local regen = layers.CreateModeGroup('Regen', {'Off', 'Regen'})
 local kite = layers.CreateModeGroup('Kite', {'Kite', 'Off'})
 local buffalo = layers.CreateModeGroup('Buffalo', {'Off', 'Buffalo'})
+local evasion = layers.CreateModeGroup('Evasion', {'Off', 'Evasion'})
 local pdt = layers.CreateModeGroup('PDT', {'Off', 'PDT'}, '2')
 local mdt = layers.CreateModeGroup('MDT', {'Off', 'MDT'}, '1')
 local bdt = layers.CreateModeGroup('BDT', {'Off', 'BDT'}, '3')
@@ -109,7 +110,7 @@ layers.Sets.MDT.Idle = MDT
 layers.Sets.PDT.Idle = PDT
 layers.Sets.Evasion.Idle = Evasion
 
-layers.Sets.Lighting.Idle = {
+layers.Sets.Lightning.Idle = {
     Main = "Terra's Staff",
     Ammo = "Phtm. Tathlum",
     Head = "Black Ribbon",
