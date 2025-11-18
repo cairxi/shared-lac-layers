@@ -46,7 +46,7 @@ layers.Sets.Idle = {
     Feet = "Dst. Leggings +1",
 }
 
-layers.Sets['Kite && Dusk to Dawn'].Idle = { Feet = "Nin. Kyahan +1" }
+layers.Sets['Dusk to Dawn && Kite'].Idle = { Feet = "Nin. Kyahan +1" }
 
 layers.Sets[BuffaloRegenPredicate].Idle = {
     Head = "Dream Ribbon",
@@ -471,15 +471,15 @@ layers.Sets.Tank.Ability = TankEnmity
 
 -- Obis 
 
-layers.Sets['~HP && Environment Score > 0'].Midcast['Lightning Magic Damage'] = { Waist = "Rairin Obi" }
-layers.Sets['~HP && Environment Score > 0'].Midcast['Water Magic Damage'] = { Waist = "Suirin Obi" }
-layers.Sets['~HP && Environment Score > 0'].Midcast['Water Enfeeblement'] = { Waist = "Suirin Obi" }
-layers.Sets['~HP && Environment Score > 0'].Midcast['Fire Magic Damage'] = { Waist = "Kairin Obi" }
-layers.Sets['~HP && Environment Score > 0'].Midcast['Ice Magic Damage'] = { Waist = "Hyorin Obi" }
-layers.Sets['~HP && Environment Score > 0'].Midcast['Ice Enfeeblement'] = { Waist = "Hyorin Obi" }
-layers.Sets['~HP && Environment Score > 0'].Midcast['Wind Magic Damage'] = { Waist = "Hyorin Obi" }
-layers.Sets['~HP && Environment Score > 0'].Midcast['Wind Enfeeblement'] = { Waist = "Hyorin Obi" }
-layers.Sets['~HP && Environment Score > 0'].Midcast['Dark Affinity'] = { Waist = "Anrin Obi" }
+layers.Sets['Environment Score > 0 && ~HP'].Midcast['Lightning Magic Damage'] = { Waist = "Rairin Obi" }
+layers.Sets['Environment Score > 0 && ~HP'].Midcast['Water Magic Damage'] = { Waist = "Suirin Obi" }
+layers.Sets['Environment Score > 0 && ~HP'].Midcast['Water Enfeeblement'] = { Waist = "Suirin Obi" }
+layers.Sets['Environment Score > 0 && ~HP'].Midcast['Fire Magic Damage'] = { Waist = "Kairin Obi" }
+layers.Sets['Environment Score > 0 && ~HP'].Midcast['Ice Magic Damage'] = { Waist = "Hyorin Obi" }
+layers.Sets['Environment Score > 0 && ~HP'].Midcast['Ice Enfeeblement'] = { Waist = "Hyorin Obi" }
+layers.Sets['Environment Score > 0 && ~HP'].Midcast['Wind Magic Damage'] = { Waist = "Hyorin Obi" }
+layers.Sets['Environment Score > 0 && ~HP'].Midcast['Wind Enfeeblement'] = { Waist = "Hyorin Obi" }
+layers.Sets['Environment Score > 0 && ~HP'].Midcast['Dark Affinity'] = { Waist = "Anrin Obi" }
 
 -- Staves
 
