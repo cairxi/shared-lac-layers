@@ -14,7 +14,7 @@ local bdt = layers.CreateModeGroup('BDT', {'Off', 'BDT'}, '3')
 local hp = layers.CreateModeGroup('HP', {'Off', 'HP'})
 local melee = layers.CreateModeGroup('Melee', {'Off', 'Melee'})
 local tank = layers.CreateModeGroup('Melee', {'Off', 'Tank'})
-local cast_style = layers.CreateModeGroup('Cast Style',{'Off','Potency','LowAcc','MidAcc','HighAcc'})
+local cast_style = layers.CreateModeGroup('Cast Style',{'Off','Potency','LowAcc','MidAcc','FullAcc'})
 
 AshitaCore:GetChatManager():QueueCommand(-1,'/macro book 4')
 
