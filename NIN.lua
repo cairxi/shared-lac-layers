@@ -20,14 +20,14 @@ AshitaCore:GetChatManager():QueueCommand(-1,'/macro book 4')
 
 -- HP/MP Based Predicates, can make this more advanced based on SJ etc
 
-local ShinobiHP = 251
-local RingHP = 890
-local MuscleHP = 510
+local ShinobiEarringHP = 251
+local ShinboRingHP = 890
+local MuscleBeltHP = 510
 
-local BuffaloRegenPredicate = ('Buffalo && Player HP < %d'):format(ShinobiHP)
-local MuscleRegenPredicate = ('Regen && Player HP < %d'):format(MuscleHP)
-local ShinobiRingPredicate = ('Player HP < %d && Melee'):format(RingHP)
-local ShinobiEarringPredicate = ('Player HP < %d'):format(ShinobiHP)
+local BuffaloRegenPredicate = ('Buffalo && Player HP < %d'):format(ShinobiEarringHP)
+local MuscleRegenPredicate = ('Regen && Player HP < %d'):format(MuscleBeltHP)
+local ShinobiRingPredicate = ('Player HP < %d && Melee'):format(ShinboRingHP)
+local ShinobiEarringPredicate = ('Player HP < %d'):format(ShinobiEarringHP)
 local RefreshPredicate = 'Player MP < 42 && (Refresh || Buffalo) && ~(Player Status Effect == Plague)'
 
 layers.Sets.Idle = {
