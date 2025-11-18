@@ -20,7 +20,7 @@ layers.Sets.Idle = {
     Hands = "Merman's Bangles",
     Ring1 = "Sattva Ring",
     Ring2 = "Shadow Ring",
-    Back = "Umbra Cape",
+    Back = "Shadow Mantle",
     Waist = "Steppe Sash",
     Legs = "Src. Tonban +1",
     Feet = "Src. Sabots +1",
@@ -53,6 +53,8 @@ local PDT = {
 
 layers.Sets.PDT.Idle = PDT
 layers.Sets.MDT.Idle = MDT
+
+layers.Sets['Nighttime && ~MDT'].Idle = { Back = "Umbra Cape" }
 
 layers.Sets.Resting = {
     Main = "Pluto's Staff",
