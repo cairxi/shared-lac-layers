@@ -200,6 +200,8 @@ layers.Sets.Midcast['Enfeebling Elemental'] = {
     Feet = "Src. Sabots +1",
 }
 
+layers.Sets.Enmity.Midcast['Enfeebling Elemental'] = layers.Sets.Midcast['Enfeebling Elemental']
+
 -- Dark Magic
 
 layers.Sets.Midcast.Dark = {
@@ -316,6 +318,7 @@ layers.Sets.FullAcc.Midcast.Elemental = {
 }
 
 layers.Sets.SorcRing.Midcast.Elemental = { Ring2 = "Sorcerer's Ring" }
+layers.Sets.SorcRing.Midcast['Enfeebling Elemental'] = { Ring2 = "Omniscient Ring" }
 layers.Sets['Player MPP After Cast < 45 && ~FullAcc && ~HighAcc'].Midcast.Elemental = { Neck = "Uggalepih Pendant" }
 
 -- Obis
@@ -370,14 +373,16 @@ local HPReductionValues = {
 }
 
 layers.RegisterCallback("PreHandlePrecast", function(spell)
-    if sorc.current == "Off" then
-        return
-    end
+    
+    if sorc.current == "Off" then return end
 
+    local classifiers = layers.GetClassifiers('Spell', spell.Name)
+    if not classifiers['Elemental'] or classifiers['Enfeebling Elemental'] then return end
+
+    local player = gData.GetPlayer()
     local selector = enmity.current
     local set = HPReductionSets[selector]
     local threshold = HPReductionValues[selector]
-    local player = gData.GetPlayer()
 
     if player.HP > threshold then
         gFunc.ForceEquipSet(set)
