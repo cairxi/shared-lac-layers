@@ -294,7 +294,7 @@ layers.Sets.FullAcc.Midcast['Elemental Ninjutsu'] = {
     Feet = "Kog. Kyahan +1",
 }
 
-layers.Sets['~FullAcc && Player MPP After Cast < 50'].Midcast['Elemental Ninjutsu'] = {
+layers.Sets['Player MPP After Cast < 50 && ~FullAcc'].Midcast['Elemental Ninjutsu'] = {
     Neck = "Uggalepih Pendant"
 }
 
