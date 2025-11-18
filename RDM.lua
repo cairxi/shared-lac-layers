@@ -138,12 +138,12 @@ local knife = { Main = "Martial Knife" }
 local joyeuse = { Main = "Joyeuse" }
 
 layers.Sets.Sword.Idle = joyeuse
-layers.Sets['Player Subjob == NIN && ~Staff && ~Club'].Idle = club_oh
+layers.Sets['~Staff && ~Club && Player Subjob == Ninja'].Idle = club_oh
 layers.Sets.Dagger.Idle = knife
 layers.Sets.Club.Idle = club_mh
 
 layers.Sets.Sword.Engaged = joyeuse
-layers.Sets['Player Subjob == NIN && ~Staff && ~Club'].Engaged = club_oh
+layers.Sets['~Staff && ~Club && Player Subjob == Ninja'].Engaged = club_oh
 layers.Sets.Dagger.Engaged = knife
 layers.Sets.Club.Engage = club_mh
 

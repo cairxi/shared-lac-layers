@@ -238,7 +238,7 @@ layers.Sets[RefreshPredicate].Interimcast = { Body = "Blue Cotehardie" }
 layers.Sets.Precast = { Ear2 = "Loquac. Earring" }
 layers.Sets.HP.Precast = HPMaintenance
 
-layers.Sets['Player Subjob == RDM'].Precast = { Back = "Warlock's Mantle" }
+layers.Sets['Player Subjob == Red Mage'].Precast = { Back = "Warlock's Mantle" }
 
 -- Midcast
 
