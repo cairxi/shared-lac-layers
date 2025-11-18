@@ -2,6 +2,7 @@ local layers = gFunc.LoadFile('layers\\layers.lua')
 
 local bqr = layers.CreateModeGroup('BQR',{'BQR','Off'})
 local weapon = layers.CreateModeGroup('Weapon',{'Staff','Katana'})
+local club = layers.CreateModeGroup('Club',{'Off','Club'})
 local resists = layers.CreateModeGroup('Resist', {'Off','Lightning','Fire','Ice','Earth','Light'})
 local refresh = layers.CreateModeGroup('Refresh', {'Off', 'Refresh'})
 local regen = layers.CreateModeGroup('Regen', {'Off', 'Regen'})
@@ -47,16 +48,13 @@ layers.Sets.Idle = {
 }
 
 layers.Sets['Dusk to Dawn && Kite'].Idle = { Feet = "Nin. Kyahan +1" }
-
-layers.Sets[BuffaloRegenPredicate].Idle = {
-    Head = "Dream Ribbon",
-    Waist = "Muscle Belt +1"
-}
+layers.Sets[BuffaloRegenPredicate].Idle = { Head = "Dream Ribbon", Waist = "Muscle Belt +1" }
 layers.Sets[RefreshPredicate].Idle = { Body = "Blue Cotehardie" }
 layers.Sets.Regen.Idle = { Head = "Dream Ribbon" }
 layers.Sets[MuscleRegenPredicate].Idle = { Waist = "Muscle Belt +1" }
 layers.Sets.Staff.Idle = { Main = "Terra's Staff" }
-layers.Sets.Katana.Idle = {}
+layers.Sets.Katana.Idle = { Main = "Fudo", Sub = "Fudo" }
+layers.Sets.Club.Idle = { Sub = "Octave Club" }
 
 local Evasion = {
     -- Range = "Ungur Boomerang",
@@ -195,8 +193,10 @@ layers.Sets[ShinobiEarringPredicate].Melee.Engaged = {
     Feet = "Nin. Kyahan +1"
 }
 
-layers.Sets['Melee && Dusk to Dawn'].Engaged = { Hands = "Kog. Tekko +1" }
-layers.Sets.Melee.Katana = layers.Sets.Idle.Katana
+layers.Sets['Dusk to Dawn && Melee'].Engaged = { Hands = "Kog. Tekko +1" }
+layers.Sets.Engaged.Katana = layers.Sets.Idle.Katana
+layers.Sets.Engaged.Staff = layers.Sets.Idle.Staff
+layers.Sets.Engaged.Club = layers.Sets.Idle.Club
 
 -- WS
 
