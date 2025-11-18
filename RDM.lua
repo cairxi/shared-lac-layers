@@ -2,18 +2,18 @@ local layers = gFunc.LoadFile('layers\\layers.lua')
 
 AshitaCore:GetChatManager():QueueCommand(-1,'/macro book 2')
 
-local idle = layers.CreateModeGroup('Idle Style', {'Off','IdlePDT','IdleMDT','IdleHP','IdleMP'})
-local resists = layers.CreateModeGroup('Resist', {'Off','Lightning'})
-local refresh = layers.CreateModeGroup('Refresh',{'Refresh','Off'})
-local weapon = layers.CreateModeGroup('Weapon',{'Staff','Mistilteinn','Sword','Dagger','Club'})
-local kite = layers.CreateModeGroup('Kite',{'Kite','Off'})
+local idle = layers.CreateModeGroup('IdleStyle', {'Off','IdlePDT','IdleMDT','IdleHP','IdleMP'},'+1')
+local resists = layers.CreateModeGroup('Resist', {'Off','Lightning'},'+2')
+local refresh = layers.CreateModeGroup('Refresh',{'Refresh','Off'},'+3')
+local weapon = layers.CreateModeGroup('Weapon',{'Staff','Mistilteinn','Sword','Dagger','Club'},'m')
+local kite = layers.CreateModeGroup('Kite',{'Kite','Off'}, 'k')
 local pdt = layers.CreateModeGroup('PDT', {'Off', 'PDT'}, '2')
 local mdt = layers.CreateModeGroup('MDT', {'Off', 'MDT'}, '1')
 local bdt = layers.CreateModeGroup('BDT', {'Off', 'BDT'}, '3')
 local mp = layers.CreateModeGroup('MP', {'Off', 'MP'}, '5')
 local hp = layers.CreateModeGroup('HP', {'Off', 'HP'}, '4')
-local melee = layers.CreateModeGroup('Melee', {'Off', 'Melee'})
-local tank = layers.CreateModeGroup('Tank', {'Off', 'Tank'})
+local melee = layers.CreateModeGroup('Melee', {'Off', 'Melee'},'+m')
+local tank = layers.CreateModeGroup('Tank', {'Off', 'Tank'},'+t')
 local cast_style = layers.CreateModeGroup('Cast Style',{'Off','Potency','Accuracy'})
 local dart = layers.CreateModeGroup('Dart', {'Off','Dart'})
 
@@ -134,18 +134,23 @@ layers.Sets['Player MP > 800'].Resting = {
 
 local club_mh = { Main = "Octave Club", Sub = "Genbu's Shield" }
 local club_oh = { Sub = "Octave Club" }
-local knife = { Main = "Martial Knife" }
-local joyeuse = { Main = "Joyeuse" }
+local knife = { Main = "Martial Knife", Sub = "Genbu's Shield" }
+local joyeuse = { Main = "Joyeuse", Sub = "Genbu's Shield" }
 
 layers.Sets.Sword.Idle = joyeuse
-layers.Sets['~Staff && ~Club && Player Subjob == Ninja'].Idle = club_oh
+layers.Sets['Player Subjob == Ninja && ~Staff && ~Club'].Idle = club_oh
 layers.Sets.Dagger.Idle = knife
 layers.Sets.Club.Idle = club_mh
 
 layers.Sets.Sword.Engaged = joyeuse
-layers.Sets['~Staff && ~Club && Player Subjob == Ninja'].Engaged = club_oh
+layers.Sets['Player Subjob == Ninja && ~Staff && ~Club'].Engaged = club_oh
 layers.Sets.Dagger.Engaged = knife
-layers.Sets.Club.Engage = club_mh
+layers.Sets.Club.Engaged = club_mh
+
+layers.Sets.Sword.Resting = joyeuse
+layers.Sets['Player Subjob == Ninja && ~Staff && ~Club'].Resting = club_oh
+layers.Sets.Dagger.Resting = knife
+layers.Sets.Club.Resting = club_mh
 
 layers.Sets.Melee.Engaged = {
     Head = "Nashira Turban",
@@ -160,6 +165,10 @@ layers.Sets.Melee.Engaged = {
     Waist = "Swift Belt",
     Legs = "Nashira Seraweels",
     Feet = "Nashira Crackows",
+}
+
+layers.Sets['Player Subjob == Ninja && ~Staff && ~Club'].Melee.Engaged = {
+    Ear2 = "Stealth Earring"
 }
 
 layers.Sets['Refresh && Melee'].Engaged = {
