@@ -4,12 +4,12 @@ AshitaCore:GetChatManager():QueueCommand(-1,'/macro book 1')
 
 local pdt = layers.CreateModeGroup('PDT', {'Off', 'PDT'}, '2')
 local mdt = layers.CreateModeGroup('MDT', {'Off', 'MDT'}, '1')
+local mb = layers.CreateModeGroup('MB', {'Off','MB'}, 'b')
 local enmity = layers.CreateModeGroup('Enmity', {'Off','Enmity'})
 local macc = layers.CreateModeGroup('Magic Accuracy', {'Off','LowAcc','MidAcc','HighAcc','FullAcc'})
 local potency_enfeeble = layers.CreateModeGroup('Potency Enfeebling', {'Off','Potency'})
 local sorc = layers.CreateModeGroup('Sorc. Ring', {'SorcRing','Off'})
 local weapons = layers.CreateModeGroup('Weapon', {'Staff','Mistilteinn'})
-local mb = layers.CreateModeGroup('MB', {'Off','MB'}, 'b')
 
 -- Idle Sets
 
