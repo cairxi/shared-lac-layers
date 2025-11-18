@@ -6,7 +6,8 @@ local pdt = layers.CreateModeGroup('PDT', {'Off', 'PDT'}, '2')
 local mdt = layers.CreateModeGroup('MDT', {'Off', 'MDT'}, '1')
 local enmity = layers.CreateModeGroup('Enmity', {'Off','Enmity'})
 local macc = layers.CreateModeGroup('Magic Accuracy', {'Off','LowAcc','MidAcc','HighAcc','FullAcc'})
-local sorc = layers.CreateModeGroup('Sorc. Ring', {'Off','SorcRing'})
+local potency_enfeeble = layers.CreateModeGroup('Potency Enfeebling', {'Off','Potency'})
+local sorc = layers.CreateModeGroup('Sorc. Ring', {'SorcRing','Off'})
 local weapons = layers.CreateModeGroup('Weapon', {'Staff','Mistilteinn'})
 local mb = layers.CreateModeGroup('MB', {'Off','MB'}, 'b')
 
@@ -46,6 +47,7 @@ local MDT = {
 local PDT = {
     Main = "Terra's Staff",
     Ammo = "Happy Egg",
+    Head = "Dream Ribbon",
     Ear1 = "Sorcerer's Earring",
     Ear2 = "Ethereal Earring",
     Ring1 = "Sattva Ring",
@@ -174,7 +176,6 @@ layers.Sets.Potency.Midcast.Blind = {
     Ear1 = "Omn. Earring +1",
     Ear2 = "Abyssal Earring",
     Body = "Mahatma Hpl.",
-    Hands = "Dls. Gloves +1",
     Ring1 = "Omniscient Ring",
     Ring2 = "Omniscient Ring",
     Back = "Prism Cape",
@@ -413,10 +414,10 @@ local lockstyle = {
     Feet = "Src. Sabots +1",
 }
 
-layers.RegisterCallback("OnLoad", function()
+layers.UserOnLoad = function()
     gSettings.AllowAddSet = false
     gFunc.LockStyle(lockstyle)
-end)
+end
 
 -- Sticky items
 
