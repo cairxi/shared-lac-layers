@@ -478,7 +478,9 @@ layers.Sets.Tank.Midcast.Cure = {
     Feet = "Dst. Leggings +1"
 }
 
-layers.Sets['Tank && Action Target Name == Cair'].Midcast.Cure = {
+local SelfCurePredicate = ('Tank && Action Target Name == %s'):format(gData.GetPlayer().Name)
+
+layers.Sets[SelfCurePredicate].Midcast.Cure = {
     Hands = "Blood Fng. Gnt.",
     Ring2 = "Bomb Queen Ring",
     Back = "Gigant Mantle",
@@ -549,8 +551,8 @@ layers.RegisterCallback("PreHandlePrecast", function(spell)
     local hp = cures[spell.Name] 
     if hp then
         local at = gData.GetActionTarget()
-        if at.Name == 'Cair' then
-            local player = gData.GetPlayer()
+        local player = gData.GetPlayer()
+        if at.Name == player.Name then
             if player.HP >= hp then
                 local set = hp_down[spell.Name]
                 gFunc.ForceEquipSet(set)

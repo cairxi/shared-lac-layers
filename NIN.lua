@@ -460,7 +460,8 @@ layers.Sets.Tank.Midcast.Bind = TankRecast
 layers.Sets.Tank.Midcast.Aspir = TankRecast
 layers.Sets.Tank.Midcast.Barspell = TankEnmity
 layers.Sets.Tank.Midcast.Cure = TankCure
-layers.Sets['Tank && Action Target Name == Cair'].Midcast.Cure = {
+local SelfCurePredicate = ('Tank && Action Target Name == %s'):format(gData.GetPlayer().Name)
+layers.Sets[SelfCurePredicate].Midcast.Cure = {
     Hands = "Seiryu's Kote",
     Ring2 = "Bomb Queen Ring",
     Back = "Gigant Mantle",
