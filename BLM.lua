@@ -369,7 +369,7 @@ local HPReductionValues = {
 }
 
 layers.RegisterCallback("PreHandlePrecast", function(spell)
-    if sorc.current ~= "SorcRing" then
+    if sorc.current == "Off" then
         return
     end
 
