@@ -91,7 +91,7 @@ layers.Sets.Precast = {
     Feet = "Rostrum Pumps",
 }
 
-layers.Sets['Player Sub Job == Red Mage'].Precast = { Back = "Warlock's Mantle" }
+layers.Sets['Player Subjob == Red Mage'].Precast = { Back = "Warlock's Mantle" }
 
 -- Midcast sets
 
