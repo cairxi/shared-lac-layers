@@ -10,6 +10,8 @@ local sorc = layers.CreateModeGroup('Sorc. Ring', {'Off','SorcRing'})
 local weapons = layers.CreateModeGroup('Weapon', {'Staff','Mistilteinn'})
 local mb = layers.CreateModeGroup('MB', {'Off','MB'}, 'b')
 
+-- Idle Sets
+
 layers.Sets.Idle = {
     Ammo = "Happy Egg",
     Head = "Dream Ribbon",
@@ -76,9 +78,13 @@ layers.Sets.Resting = {
 layers.Sets.MDT.Resting = MDT
 layers.Sets.PDT.Resting = PDT
 
+-- Interim sets
+
 layers.Sets.Interimcast = PDT
 layers.Sets.PDT.Interimcast = PDT
 layers.Sets.MDT.Interimcast = MDT
+
+-- Precast sets
 
 layers.Sets.Precast = {
     Ear2 = "Loquac. Earring",
@@ -86,6 +92,8 @@ layers.Sets.Precast = {
 }
 
 layers.Sets['Player Sub Job == RDM'].Precast = { Back = "Warlock's Mantle" }
+
+-- Midcast sets
 
 layers.Sets.Midcast = {
     Ammo = "Dream Sand",
@@ -98,6 +106,8 @@ layers.Sets.Midcast = {
     Waist = "Swift Belt",
     Feet = "Rostrum Pumps",
 }
+
+-- Healing
 
 layers.Sets.Midcast.Cure = {
     Main = "Apollo's Staff",
@@ -113,6 +123,8 @@ layers.Sets.Midcast.Cure = {
     Legs = "Mahatma Slops",
     Feet = "Hydra Gaiters",
 }
+
+-- Enfeebling
 
 layers.Sets.Midcast.Enfeebling = {
     Ammo = "Phtm. Tathlum",
@@ -169,6 +181,8 @@ layers.Sets.Potency.Midcast.Blind = {
     Legs = "Mahatma Slops",
 }
 
+-- Ele Dots
+
 layers.Sets.Midcast['Enfeebling Elemental'] = {
     Ammo = "Phtm. Tathlum",
     Neck = "Prudence Torque",
@@ -184,6 +198,8 @@ layers.Sets.Midcast['Enfeebling Elemental'] = {
     Legs = "Mahatma Slops",
     Feet = "Src. Sabots +1",
 }
+
+-- Dark Magic
 
 layers.Sets.Midcast.Dark = {
     Ammo = "Dream Sand",
@@ -219,6 +235,8 @@ layers.Sets.Enmity.Midcast.Stun = {
 layers.Sets['Weather Element == Dark && ~HighAcc'].Drain = { Main = "Diabolos's Pole" }
 layers.Sets['Weather Element == Dark && ~HighAcc'].Aspir = { Main = "Diabolos's Pole" }
 
+-- Enchancing
+
 local enchancing_skill = {
     Neck = "Enhancing Torque",
     Back = "Merciful Cape",
@@ -236,6 +254,8 @@ layers.Sets.Midcast.Invisible = {
     Hands = "Dream Mittens +1",
     Back = "Skulker's Cape",
 }
+
+-- Elemental magic
 
 local MaxPotency = {
     Ammo = "Phtm. Tathlum",
@@ -297,6 +317,8 @@ layers.Sets.FullAcc.Midcast.Elemental = {
 layers.Sets.SorcRing.Midcast.Elemental = { Ring2 = "Sorcerer's Ring" }
 layers.Sets['Player MPP After Cast < 45 && ~FullAcc && ~HighAcc'].Midcast.Elemental = { Neck = "Uggalepih Pendant" }
 
+-- Obis
+
 layers.Sets['Environment Score > 0'].Midcast['Lightning Magic Damage'] = { Waist = "Rairin Obi" }
 layers.Sets['Environment Score > 0'].Midcast['Water Magic Damage'] = { Waist = "Suirin Obi" }
 layers.Sets['Environment Score > 0'].Midcast['Water Enfeeblement'] = { Waist = "Suirin Obi" }
@@ -306,6 +328,8 @@ layers.Sets['Environment Score > 0'].Midcast['Ice Enfeeblement'] = { Waist = "Hy
 layers.Sets['Environment Score > 0'].Midcast['Wind Magic Damage'] = { Waist = "Hyorin Obi" }
 layers.Sets['Environment Score > 0'].Midcast['Wind Enfeeblement'] = { Waist = "Hyorin Obi" }
 layers.Sets['Environment Score > 0'].Midcast['Dark Affinity'] = { Waist = "Anrin Obi" }
+
+-- Staves
 
 layers.Sets.Midcast['Earth Magic Damage'] = { Main = "Terra's Staff" }
 layers.Sets.Midcast['Earth Enfeeblement'] = { Main = "Terra's Staff" }
@@ -318,6 +342,8 @@ layers.Sets.Midcast['Ice Enfeeblement'] = { Main = "Aquilo's Staff" }
 layers.Sets.Midcast['Wind Magic Damage'] = { Main = "Auster's Staff" }
 layers.Sets.Midcast['Wind Enfeeblement'] = { Main = "Auster's Staff" }
 layers.Sets.Midcast['Dark Affinity'] = { Main = "Pluto's Staff" }
+
+-- Sorc Ring Helper
 
 local HPReductionSets = {
     ['Off'] = {
@@ -342,32 +368,27 @@ local HPReductionValues = {
     ['Enmity'] = 592,
 }
 
--- Sorc Ring Helper
-
 layers.RegisterCallback("PreHandlePrecast", function(spell)
     if sorc.current ~= "SorcRing" then
         return
     end
 
     local selector = enmity.current
-
     local set = HPReductionSets[selector]
     local threshold = HPReductionValues[selector]
-
     local player = gData.GetPlayer()
 
     if player.HP > threshold then
         gFunc.ForceEquipSet(set)
     end
-
 end, "Sorc. Ring HP Helper")
 
 -- Interim cast delay
 
 layers.RegisterCallback("PreHandleMidcast", function(spell)
-
     local player = gData.GetPlayer()
     local fastCastValue = .99
+
     if player.SubJob == 'RDM' then
         fastCastValue = fastCastValue - .21
     end
@@ -375,6 +396,7 @@ layers.RegisterCallback("PreHandleMidcast", function(spell)
     local buffer = 0.25
     local packetDelay = 0.25
     local castDelay = (spell.CastTime * fastCastValue) / 1000 - buffer
+    
     if castDelay >= packetDelay then
         gFunc.SetMidDelay(castDelay)
     end
