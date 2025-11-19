@@ -178,7 +178,10 @@ layers.Sets['Refresh && Melee'].Engaged = {
 
 -- Interim Sets
 
-layers.Sets.Interimcast = PDT
+layers.Sets.Interimcast = layers.Sets.Idle
+layers.Sets.IdleHP.Interimcast = layers.Sets.IdleHP.Idle
+layers.Sets.IdleMDT.Interimcast = layers.Sets.IdleMDT.Idle
+layers.Sets.IdlePDT.Interimcast = layers.Sets.IdlePDT.Idle
 layers.Sets.PDT.Interimcast = PDT
 layers.Sets.HP.Interimcast = {
     Ammo = "Happy Egg",
@@ -335,8 +338,12 @@ layers.Sets.Midcast.Elemental = {
     Feet = "Dls. Boots +1",
 }
 
-layers.Sets['~Accuracy && Player MPP After Cast < 50'].Midcast.Elemental = {
+layers.Sets['Player MPP After Cast < 50 && ~Accuracy'].Midcast.Elemental = {
     Neck = "Uggalepih Pendant"
+}
+
+layers.Sets['Player MPP After Cast < 50 && ~Accuracy'].Midcast['Enfeebling Elemental'] = {
+    Neck = "Elemental Torque",
 }
 
 layers.Sets.Accuracy.Midcast.Elemental = {
