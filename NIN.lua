@@ -29,7 +29,7 @@ local BuffaloRegenPredicate = ('Buffalo && Player HP < %d'):format(ShinobiEarrin
 local MuscleRegenPredicate = ('Regen && Player HP < %d'):format(MuscleBeltHP)
 local ShinobiRingPredicate = ('Player HP < %d && Melee'):format(ShinboRingHP)
 local ShinobiEarringPredicate = ('Player HP < %d'):format(ShinobiEarringHP)
-local RefreshPredicate = 'Player MP < 42 && (Refresh || Buffalo) && ~(Player Status Effect == Plague)'
+local RefreshPredicate = 'Player MP < 42 && (Refresh || Buffalo) && ~(Player Status Effect == plague)'
 
 layers.Sets.Idle = {
     Ammo = "Happy Egg",

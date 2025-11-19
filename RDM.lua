@@ -76,6 +76,10 @@ local MDT =  {
     Feet = "Coral Greaves +1",
 }
 
+local BDT = {
+    Legs = "Bahamut's Hose",
+}
+
 layers.Sets.IdleHP.Idle = {
     ring2 = "Bloodbead Ring",
     --ring2 = "Bomb Queen Ring",
@@ -94,6 +98,7 @@ layers.Sets.PDT.Idle = PDT
 layers.Sets.IdlePDT.Idle = PDT
 layers.Sets.MDT.Idle = MDT
 layers.Sets.IdleMDT.Idle = MDT
+layers.Sets.BDT.Idle = BDT
 
 layers.Sets.Kite.Idle = { Legs = "Blood Cuisses" }
 
