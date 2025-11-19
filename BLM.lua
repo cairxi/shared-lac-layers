@@ -82,7 +82,7 @@ layers.Sets.PDT.Resting = PDT
 
 -- Interim sets
 
-layers.Sets.Interimcast = PDT
+layers.Sets.Interimcast = layers.Sets.Idle
 layers.Sets.PDT.Interimcast = PDT
 layers.Sets.MDT.Interimcast = MDT
 

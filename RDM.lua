@@ -83,6 +83,8 @@ layers.Sets.IdleHP.Idle = {
 }
 
 layers.Sets.IdleMP.Idle = {
+    Ammo = "Dream Sand",
+    Ear1 = "Loquac. Earring",
     Hands = "Blood Fng. Gnt.",
     Neck = "Uggalepih Pendant",
     Waist = "Hierarch Belt",

@@ -1,20 +1,20 @@
 local layers = gFunc.LoadFile('layers\\layers.lua')
 
 local bqr = layers.CreateModeGroup('BQR',{'BQR','Off'})
-local weapon = layers.CreateModeGroup('Weapon',{'Staff','Katana'})
+local weapon = layers.CreateModeGroup('Weapon',{'Staff','Katana'},'m')
 local club = layers.CreateModeGroup('Club',{'Off','Club'})
-local resists = layers.CreateModeGroup('Resist', {'Off','Lightning','Fire','Ice','Earth','Light'})
-local refresh = layers.CreateModeGroup('Refresh', {'Off', 'Refresh'})
+local resists = layers.CreateModeGroup('Resist', {'Off','Lightning','Fire','Ice','Earth','Light'},'+2')
+local refresh = layers.CreateModeGroup('Refresh', {'Off', 'Refresh'},'+1')
 local regen = layers.CreateModeGroup('Regen', {'Off', 'Regen'})
-local kite = layers.CreateModeGroup('Kite', {'Kite', 'Off'})
-local buffalo = layers.CreateModeGroup('Buffalo', {'Off', 'Buffalo'})
+local kite = layers.CreateModeGroup('Kite', {'Kite', 'Off'},'k')
+local buffalo = layers.CreateModeGroup('Buffalo', {'Off', 'Buffalo'},'+3')
 local evasion = layers.CreateModeGroup('Evasion', {'Off', 'Evasion'})
 local pdt = layers.CreateModeGroup('PDT', {'Off', 'PDT'}, '2')
 local mdt = layers.CreateModeGroup('MDT', {'Off', 'MDT'}, '1')
 local bdt = layers.CreateModeGroup('BDT', {'Off', 'BDT'}, '3')
-local hp = layers.CreateModeGroup('HP', {'Off', 'HP'})
-local melee = layers.CreateModeGroup('Melee', {'Off', 'Melee'})
-local tank = layers.CreateModeGroup('Melee', {'Off', 'Tank'})
+local hp = layers.CreateModeGroup('HP', {'Off', 'HP'},'4')
+local melee = layers.CreateModeGroup('Melee', {'Off', 'Melee'},'+m')
+local tank = layers.CreateModeGroup('Tank', {'Off', 'Tank'},'+t')
 local cast_style = layers.CreateModeGroup('Cast Style',{'Off','Potency','LowAcc','MidAcc','FullAcc'})
 
 AshitaCore:GetChatManager():QueueCommand(-1,'/macro book 4')
@@ -46,6 +46,8 @@ layers.Sets.Idle = {
     Legs = "Dst. Subligar +1",
     Feet = "Dst. Leggings +1",
 }
+
+layers.Sets.Staff.Engaged = layers.Sets.Idle
 
 layers.Sets['Dusk to Dawn && Kite'].Idle = { Feet = "Nin. Kyahan +1" }
 layers.Sets[BuffaloRegenPredicate].Idle = { Head = "Dream Ribbon", Waist = "Muscle Belt +1" }
@@ -103,7 +105,7 @@ local PDT = {
 }
 
 layers.Sets.HP.Idle = HP
-layers.Sets['~BQR && HP'].Idle = { Ring2 = "Bloodbead Ring" }
+layers.Sets['HP && ~BQR'].Idle = { Ring2 = "Bloodbead Ring" }
 layers.Sets.MDT.Idle = MDT
 layers.Sets.PDT.Idle = PDT
 layers.Sets.Evasion.Idle = Evasion
@@ -227,7 +229,7 @@ local HPMaintenance = {
     Waist = "Steppe Sash",
 }
 
-layers.Sets.Interimcast = PDT
+layers.Sets.Interimcast = layers.Sets.Idle
 layers.Sets.PDT.Interimcast = PDT
 layers.Sets.MDT.Interimcast = MDT
 layers.Sets.HP.Interimcast = HPMaintenance
