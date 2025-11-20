@@ -2,10 +2,10 @@ local layers = gFunc.LoadFile('layers\\layers.lua')
 
 local bqr = layers.CreateModeGroup('BQR',{'BQR','Off'})
 local weapon = layers.CreateModeGroup('Weapon',{'Staff','Katana'},'m')
-local club = layers.CreateModeGroup('Club',{'Off','Club'})
-local resists = layers.CreateModeGroup('Resist', {'Off','Lightning','Fire','Ice','Earth','Light'},'+2')
+local club = layers.CreateModeGroup('Club',{'Off','Club'},'+c')
+local resists = layers.CreateModeGroup('Resist', {'Off','Lightning','Fire','Ice','Earth','Light'},'+r')
 local refresh = layers.CreateModeGroup('Refresh', {'Off', 'Refresh'},'+1')
-local regen = layers.CreateModeGroup('Regen', {'Off', 'Regen'})
+local regen = layers.CreateModeGroup('Regen', {'Off', 'Regen'},'+2')
 local kite = layers.CreateModeGroup('Kite', {'Kite', 'Off'},'k')
 local buffalo = layers.CreateModeGroup('Buffalo', {'Off', 'Buffalo'},'+3')
 local evasion = layers.CreateModeGroup('Evasion', {'Off', 'Evasion'})
@@ -50,9 +50,9 @@ layers.Sets.Idle = {
 }
 
 layers.Sets.Staff.Engaged = layers.Sets.Idle
-layers.Sets.Kite.Idle = { Feet = { Name = "Nin. Kyahan +1", When = "Dusk to Dawn" }}
-layers.Sets.Refresh.Idle = { Body = { Name = "Blue Cotehardie", When = RefreshPredicate }}
-layers.Sets.Buffalo.Idle = { Body = { Name = "Blue Cotehardie", When = RefreshPredicate }}
+layers.Sets.Kite.Idle = { Feet = {{ Name = "Nin. Kyahan +1", When = "Dusk to Dawn" }}}
+layers.Sets.Refresh.Idle = { Body = {{ Name = "Blue Cotehardie", When = RefreshPredicate }}}
+layers.Sets.Buffalo.Idle = { Body = {{ Name = "Blue Cotehardie", When = RefreshPredicate }}}
 layers.Sets.Staff.Idle = { Main = "Terra's Staff" }
 layers.Sets.Katana.Idle = { Main = "Fudo", Sub = "Fudo" }
 layers.Sets.Club.Idle = { Sub = "Octave Club" }
@@ -243,7 +243,7 @@ layers.Sets.Earth.Interimcast = layers.Sets.Earth.Idle
 
 layers.Sets.Precast = { 
     Ear2 = "Loquac. Earring",
-    Back = { Name = "Warlock's Mantle", When = "Player Subjob == RDM" }
+    Back = {{ Name = "Warlock's Mantle", When = "Player Subjob == RDM" }}
 }
 
 layers.Sets.HP.Precast = HPMaintenance
