@@ -220,12 +220,13 @@ layers.Sets.Weaponskill = {
 -- Interim Sets
 
 local HPMaintenance = {
-    Head = "Genbu's Kabuto",
-    Hands = "Seiryu's Kote",
-    Ring1 = { Name = "Bloodbead Ring", Priority = 100 },
-    Ring2 = { Name = "Bomb Queen Ring", Priority = 101 },
-    Back = "Gigant Mantle",
-    Waist = "Steppe Sash",
+    Head =  { Name = "Genbu's Kabuto", Priority = 100 },
+    Hands = { Name = "Seiryu's Kote", Priority = 100 },
+    Ring1 = { Name = "Sattva Ring", Priority = 100 },
+    Ring2 = { { Name = "Bomb Queen Ring", When = "BQR", Priority = 101},
+              { Name = "Bloodbead Ring", Priority = 101 } },
+    Back =  { Name = "Gigant Mantle", Priority = 100 },
+    Waist = { Name = "Steppe Sash", Priority = 100 }
 }
 
 layers.Sets.Interimcast = layers.Sets.Idle
@@ -244,14 +245,15 @@ layers.Sets.Precast = {
     Ear2 = "Loquac. Earring",
     Back = { Name = "Warlock's Mantle", When = "Player Subjob == RDM" }
 }
+
 layers.Sets.HP.Precast = HPMaintenance
 
 -- Midcast
 
 layers.Sets.HP.Midcast = {
     Hands = "Seiryu's Kote",
-    Ring1 = "Sattva Ring",
-    Back = "Gigant Mantle",
+    Ring2 = { { Name = "Bomb Queen Ring", When = "BQR", Priority = 101},
+              { Name = "Bloodbead Ring", Priority = 101 } },
     Legs = "Yasha Hakama +1",
     Waist = "Steppe Sash",
 }
