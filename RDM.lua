@@ -2,9 +2,9 @@ local layers = gFunc.LoadFile('layers\\layers.lua')
 
 AshitaCore:GetChatManager():QueueCommand(-1,'/macro book 2')
 
-local idle = layers.CreateModeGroup('IdleStyle', {'Off','IdlePDT','IdleMDT','IdleHP','IdleMP'},'+1')
-local resists = layers.CreateModeGroup('Resist', {'Off','Lightning'},'+2')
-local refresh = layers.CreateModeGroup('Refresh',{'Refresh','Off'},'+3')
+local idle = layers.CreateModeGroup('IdleStyle', {'Off','IdlePDT','IdleMDT','IdleHP','IdleMP'},'i')
+local resists = layers.CreateModeGroup('Resist', {'Off','Lightning'},'+r')
+local refresh = layers.CreateModeGroup('Refresh',{'Refresh','Off'},'+2')
 local weapon = layers.CreateModeGroup('Weapon',{'Staff','Mistilteinn','Sword','Dagger','Club'},'m')
 local kite = layers.CreateModeGroup('Kite',{'Kite','Off'}, 'k')
 local pdt = layers.CreateModeGroup('PDT', {'Off', 'PDT'}, '2')
@@ -14,7 +14,7 @@ local mp = layers.CreateModeGroup('MP', {'Off', 'MP'}, '5')
 local hp = layers.CreateModeGroup('HP', {'Off', 'HP'}, '4')
 local melee = layers.CreateModeGroup('Melee', {'Off', 'Melee'},'+m')
 local tank = layers.CreateModeGroup('Tank', {'Off', 'Tank'},'+t')
-local cast_style = layers.CreateModeGroup('Cast Style',{'Off','Potency','Accuracy'})
+local cast_style = layers.CreateModeGroup('Cast Style',{'Off','Potency','Accuracy'},'+1')
 local dart = layers.CreateModeGroup('Dart', {'Off','Dart'})
 
 -- Idle / Engaged / Resting
@@ -139,25 +139,25 @@ layers.Sets['Player MP > 800'].Resting = {
 
 -- Melee memes
 
-local club_mh = { Main = "Octave Club", Sub = "Genbu's Shield" }
-local club_oh = { Sub = "Octave Club" }
-local knife = { Main = "Martial Knife", Sub = "Genbu's Shield" }
-local joyeuse = { Main = "Joyeuse", Sub = "Genbu's Shield" }
+local ClubMain = { Main = "Octave Club", Sub = "Genbu's Shield" }
+local ClubOff = { Sub = "Octave Club" }
+local MartialKnife = { Main = "Martial Knife", Sub = "Genbu's Shield" }
+local Joyeuse = { Main = "Joyeuse", Sub = "Genbu's Shield" }
 
-layers.Sets.Sword.Idle = joyeuse
-layers.Sets['Player Subjob == Ninja && ~Staff && ~Club'].Idle = club_oh
-layers.Sets.Dagger.Idle = knife
-layers.Sets.Club.Idle = club_mh
+layers.Sets.Sword.Idle = Joyeuse
+layers.Sets['Player Subjob == Ninja && ~Staff && ~Club'].Idle = ClubOff
+layers.Sets.Dagger.Idle = MartialKnife
+layers.Sets.Club.Idle = ClubMain
 
-layers.Sets.Sword.Engaged = joyeuse
-layers.Sets['Player Subjob == Ninja && ~Staff && ~Club'].Engaged = club_oh
-layers.Sets.Dagger.Engaged = knife
-layers.Sets.Club.Engaged = club_mh
+layers.Sets.Sword.Engaged = Joyeuse
+layers.Sets['Player Subjob == Ninja && ~Staff && ~Club'].Engaged = ClubOff
+layers.Sets.Dagger.Engaged = MartialKnife
+layers.Sets.Club.Engaged = ClubMain
 
-layers.Sets.Sword.Resting = joyeuse
-layers.Sets['Player Subjob == Ninja && ~Staff && ~Club'].Resting = club_oh
-layers.Sets.Dagger.Resting = knife
-layers.Sets.Club.Resting = club_mh
+layers.Sets.Sword.Resting = Joyeuse
+layers.Sets['Player Subjob == Ninja && ~Staff && ~Club'].Resting = ClubOff
+layers.Sets.Dagger.Resting = MartialKnife
+layers.Sets.Club.Resting = ClubMain
 
 layers.Sets.Melee.Engaged = {
     Head = "Nashira Turban",
@@ -274,11 +274,9 @@ layers.Sets.Midcast.Enfeebling = {
     Feet = "Nashira Crackows",
 }
 
-layers.Sets['Accuracy && Outside Nation Control'].Midcast.Enfeebling = {
-    Hands = "Mst.Cst. Bracelets"
-}
+layers.Sets['Outside Nation Control'].Midcast.Enfeebling = { Hands = "Mst.Cst. Bracelets" }
 
-local mnd_potency = {
+local MndPotency = {
     Neck = "Faith Torque",
     Ear1 = "Cmn. Earring",
     Ear2 = "Cmn. Earring",
@@ -288,18 +286,7 @@ local mnd_potency = {
     Back = "Prism Cape",
 }
 
-layers.Sets.Midcast['White Magic Enfeebling'] = {
-    Ammo = "Dream Sand",
-    Ear2 = "Cmn. Earring",
-    Hands = "Dvt. Mitts +1",
-    Ring1 = "Aqua Ring",
-    Ring2 = "Aqua Ring",
-}
-
-layers.Sets.Midcast.Slow = mnd_potency
-layers.Sets.Midcast.Paralyze = mnd_potency
-
-layers.Sets.Midcast.Blind = {
+local IntPotency = {
     Neck = "Prudence Torque",
     Ear1 = "Omn. Earring +1",
     Ear2 = "Abyssal Earring",
@@ -311,14 +298,34 @@ layers.Sets.Midcast.Blind = {
     Legs = "Mahatma Slops",
 }
 
-local max_potency = {
+
+layers.Sets.Midcast['White Magic Enfeebling'] = {
+    Ammo = "Dream Sand",
+    Ear2 = "Cmn. Earring",
+    Hands = "Dvt. Mitts +1",
+    Ring1 = "Aqua Ring",
+    Ring2 = "Aqua Ring",
+}
+
+layers.Sets.Midcast.Slow = MndPotency
+layers.Sets.Midcast.Paralyze = MndPotency
+layers.Sets.Midcast.Blind = IntPotency
+layers.Sets['Outside Nation Control'].Midcast.Slow = MndPotency
+layers.Sets['Outside Nation Control'].Midcast.Paralyze = MndPotency
+layers.Sets['Outside Nation Control'].Midcast.Blind = IntPotency
+
+layers.Sets['Outside Nation Control && Accuracy'].Midcast.Slow = { Hands = "Mst.Cst. Bracelets" }
+layers.Sets['Outside Nation Control && Accuracy'].Midcast.Paralyze = { Hands = "Mst.Cst. Bracelets" }
+layers.Sets['Outside Nation Control && Accuracy'].Midcast.Blind = { Hands = "Mst.Cst. Bracelets" }
+
+local MaxPotency = {
     Main = "Mistilteinn",
     Sub = "Nms. Shield +1",
 }
 
-layers.Sets.Potency.Midcast.Slow = max_potency
-layers.Sets.Potency.Midcast.Paralyze = max_potency
-layers.Sets.Potency.Midcast.Blind = max_potency
+layers.Sets.Potency.Midcast.Slow = MaxPotency
+layers.Sets.Potency.Midcast.Paralyze = MaxPotency
+layers.Sets.Potency.Midcast.Blind = MaxPotency
 
 layers.Sets.Accuracy.Midcast.Enfeebling = {
     Head = "Dls. Chapeau +1",
@@ -401,16 +408,16 @@ layers.Sets.Midcast['Absorption Dark'] = {
 
 -- Specific Spells
 
-local enchancing_skill = {
+local EnchancingSkill = {
     Neck = "Enhancing Torque",
     Hands = "Dls. Gloves +1",
     Back = "Merciful Cape",
     Legs = "Wlk. Tights +1",
 }
 
-layers.Sets.Midcast.Phalanx = enchancing_skill
-layers.Sets.Midcast.Barspell = enchancing_skill
-layers.Sets.Midcast.Enspell = enchancing_skill
+layers.Sets.Midcast.Phalanx = EnchancingSkill
+layers.Sets.Midcast.Barspell = EnchancingSkill
+layers.Sets.Midcast.Enspell = EnchancingSkill
 
 layers.Sets.Midcast.Stoneskin = {
     Neck = "Stone Gorget",
@@ -455,7 +462,7 @@ layers.Sets.Midcast.Invisible = {
 
 -- Tank Midcast
 
-local low_recast = {
+local LowRecast = {
     Main = "Terra's Staff",
     Ammo = "Happy Egg",
     Head = "Baron's Chapeau",
@@ -470,7 +477,7 @@ local low_recast = {
     Feet = "Dst. Leggings +1"
 }
 
-local high_recast = {
+local HighRecast = {
     Main = "Terra's Staff",
     Ammo = "Happy Egg",
     Head = "Wlk. Chapeau +1",
@@ -510,12 +517,12 @@ layers.Sets[SelfCurePredicate].Midcast.Cure = {
     Legs = "Blood Cuisses",
 }
 
-layers.Sets.Tank.Midcast.Dispel = low_recast
-layers.Sets.Tank.Midcast.Sleep = high_recast
-layers.Sets.Tank.Midcast.Dia = low_recast
-layers.Sets.Tank.Midcast.Poisonga = low_recast
-layers.Sets.Tank.Midcast.Blind = low_recast
-layers.Sets.Tank.Midcast.Bind = high_recast
+layers.Sets.Tank.Midcast.Dispel = LowRecast
+layers.Sets.Tank.Midcast.Sleep = HighRecast
+layers.Sets.Tank.Midcast.Dia = LowRecast
+layers.Sets.Tank.Midcast.Poisonga = LowRecast
+layers.Sets.Tank.Midcast.Blind = LowRecast
+layers.Sets.Tank.Midcast.Bind = HighRecast
 
 -- Obis
 
@@ -546,12 +553,12 @@ layers.Sets.Midcast['Dark Affinity'] = { Main ="Pluto's Staff" }
 
 -- Cure cheat logic
 
-local cures = {
+local CureThresholds = {
     ['Cure III'] = 950,
     ['Cure IV'] = 800,
 }
 
-local hp_down = {
+local HPDownSets = {
     ['Cure III'] = {
         Ear1 = "Merman's Earring",
         Body = "Dalmatica",
@@ -571,13 +578,13 @@ local hp_down = {
 }
 
 layers.RegisterCallback("PreHandlePrecast", function(spell)
-    local hp = cures[spell.Name] 
+    local hp = CureThresholds[spell.Name] 
     if hp then
         local at = gData.GetActionTarget()
         local player = gData.GetPlayer()
         if at.Name == player.Name then
             if player.HP >= hp then
-                local set = hp_down[spell.Name]
+                local set = HPDownSets[spell.Name]
                 gFunc.ForceEquipSet(set)
             end
         end
@@ -598,7 +605,7 @@ end, "Midcast Mid Delay")
 
 -- Sticky items
 
-local charged = {
+local ChargedItems = {
     "Reraise Hairpin","Reraise Earring",
     "Warp Cudgel","Treat Staff II",
     "Chariot Band",
@@ -606,6 +613,6 @@ local charged = {
     "Powder Boots",
 }
 
-for _,v in pairs(charged) do layers.AddChargedItem(v) end
+for _,v in pairs(ChargedItems) do layers.AddChargedItem(v) end
 
 return layers
