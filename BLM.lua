@@ -23,7 +23,8 @@ layers.Sets.Idle = {
     Hands = "Merman's Bangles",
     Ring1 = "Sattva Ring",
     Ring2 = "Shadow Ring",
-    Back = "Shadow Mantle",
+    Back = {{ Name = "Umbra Cape", When = "Nighttime && ~MDT"},
+            { Name = "Shadow Mantle" }},
     Waist = "Steppe Sash",
     Legs = "Src. Tonban +1",
     Feet = "Src. Sabots +1",
@@ -52,13 +53,12 @@ local PDT = {
     Ear2 = "Ethereal Earring",
     Ring1 = "Sattva Ring",
     Ring2 = "Jelly Ring",
-    Back = "Shadow Mantle",
+    Back = {{ Name = "Umbra Cape", When = "Nighttime" },
+            { Name = "Shadow Mantle" }}
 }
 
 layers.Sets.PDT.Idle = PDT
 layers.Sets.MDT.Idle = MDT
-
-layers.Sets['Nighttime && ~MDT'].Idle = { Back = "Umbra Cape" }
 
 layers.Sets.Resting = {
     Main = "Pluto's Staff",
@@ -91,9 +91,8 @@ layers.Sets.MDT.Interimcast = MDT
 layers.Sets.Precast = {
     Ear2 = "Loquac. Earring",
     Feet = "Rostrum Pumps",
+    Back = { Name = "Warlock's Mantle", When = "Player Subjob == RDM" }
 }
-
-layers.Sets['Player Subjob == Red Mage'].Precast = { Back = "Warlock's Mantle" }
 
 -- Midcast sets
 
@@ -135,7 +134,8 @@ layers.Sets.Midcast.Enfeebling = {
     Ear1 = "Enfeebling Earring",
     Ear2 = "Abyssal Earring",
     Body = "Wzd. Coat +1",
-    Hands = "Wzd. Gloves +1",
+    Hands = {{ Name = "Mst.Cst. Bracelets", When = "Outside Nation Control" },
+             { Name = "Wzd. Gloves +1" }},
     Ring1 = "Omniscient Ring",
     Ring2 = "Omniscient Ring",
     Back = "Altruistic Cape",
@@ -144,11 +144,7 @@ layers.Sets.Midcast.Enfeebling = {
     Feet = "Rostrum Pumps",
 }
 
-layers.Sets['Outside Nation Control'].Midcast.Enfeebling = {
-    Hands = "Mst.Cst. Bracelets",
-}
-
-local mnd_potency = {
+local MndPotency = {
     Neck = "Faith Torque",
     Ear1 = "Cmn. Earring",
     Ear2 = "Cmn. Earring",
@@ -168,8 +164,8 @@ layers.Sets.Midcast['White Magic Enfeebling'] = {
     Waist = "Penitent's Rope",
 }
 
-layers.Sets.Potency.Midcast.Slow = mnd_potency
-layers.Sets.Potency.Midcast.Paralyze = mnd_potency
+layers.Sets.Potency.Midcast.Slow = MndPotency
+layers.Sets.Potency.Midcast.Paralyze = MndPotency
 
 layers.Sets.Potency.Midcast.Blind = {
     Neck = "Prudence Torque",
@@ -220,9 +216,7 @@ layers.Sets.Midcast.Dark = {
     Feet = "Rostrum Pumps",
 }
 
-layers.Sets.Midcast['Absorption Dark'] = {
-    Ring2 = "Overlord's Ring",
-}
+layers.Sets.Midcast['Absorption Dark'] = { Ring2 = "Overlord's Ring" }
 
 layers.Sets.Midcast.Stun = {
     Ear1 = "Novia Earring",
@@ -240,13 +234,13 @@ layers.Sets['Weather Element == Dark && ~HighAcc'].Aspir = { Main = "Diabolos's 
 
 -- Enchancing
 
-local enchancing_skill = {
+local EnchancingSkill = {
     Neck = "Enhancing Torque",
     Back = "Merciful Cape",
 }
 
-layers.Sets.Midcast.Phalanx = enchancing_skill
-layers.Sets.Midcast.Barspell = enchancing_skill
+layers.Sets.Midcast.Phalanx = EnchancingSkill
+layers.Sets.Midcast.Barspell = EnchancingSkill
 
 layers.Sets.Midcast.Sneak = {
     Back = "Skulker's Cape",
@@ -262,14 +256,16 @@ layers.Sets.Midcast.Invisible = {
 
 local MaxPotency = {
     Ammo = "Phtm. Tathlum",
-    Neck = "Prudence Torque",
+    Neck = {{ Name = "Uggalepih Pendant", When = "Player MPP After Cast < 50" },
+            { Name = "Prudence Torque" }},
     Head = "Wzd. Petasos +1",
     Ear1 = "Moldavite Earring",
     Ear2 = "Novio Earring",
     Body = "Igqira Weskit",
     Hands = "Zenith Mitts",
     Ring1 = "Omniscient Ring",
-    Ring2 = "Omniscient Ring",
+    Ring2 = {{ Name = "Sorcerer's Ring", When = "Sorc" },
+             { Name = "Omniscient Ring" }},
     Back = "Prism Cape",
     Waist = "Sorcerer's Belt",
     Legs = "Mahatma Slops",
@@ -316,10 +312,6 @@ layers.Sets.FullAcc.Midcast.Elemental = {
     Back = "Merciful Cape",
     Feet = "Nashira Crackows",
 }
-
-layers.Sets.SorcRing.Midcast.Elemental = { Ring2 = "Sorcerer's Ring" }
-layers.Sets.SorcRing.Midcast['Enfeebling Elemental'] = { Ring2 = "Omniscient Ring" }
-layers.Sets['Player MPP After Cast < 45 && ~FullAcc && ~HighAcc'].Midcast.Elemental = { Neck = "Uggalepih Pendant" }
 
 -- Obis
 
