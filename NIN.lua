@@ -25,15 +25,16 @@ local ShinobiEarringHP = 251
 local ShinboRingHP = 890
 local MuscleBeltHP = 510
 
-local BuffaloRegenPredicate = ('Buffalo && Player HP < %d'):format(ShinobiEarringHP)
-local MuscleRegenPredicate = ('Regen && Player HP < %d'):format(MuscleBeltHP)
-local ShinobiRingPredicate = ('Player HP < %d && Melee'):format(ShinboRingHP)
+local ShinobiRingPredicate = ('Player HP < %d'):format(ShinboRingHP)
 local ShinobiEarringPredicate = ('Player HP < %d'):format(ShinobiEarringHP)
-local RefreshPredicate = 'Player MP < 42 && (Refresh || Buffalo) && ~(Player Status Effect == plague)'
+local DreamRibbonPredicate = ("Regen || (Buffalo && Player HP < %d)"):format(ShinobiEarringHP)
+local MuscleBeltPredicate = ("Regen && Player HP < %d || (Buffalo && Player HP < %d)"):format(MuscleBeltHP, ShinobiEarringHP)
+local RefreshPredicate = 'Player MP < 42 && ~(Player Status Effect == plague)'
 
 layers.Sets.Idle = {
     Ammo = "Happy Egg",
-    Head = "Arh. Jinpachi +1",
+    Head = {{ Name = "Dream Ribbon", When = DreamRibbonPredicate },
+            { Name = "Arh. Jinpachi +1" }},
     Neck = "Jeweled Collar +1",
     Ear1 = "Merman's Earring",
     Ear2 = "Ethereal Earring",
@@ -42,18 +43,17 @@ layers.Sets.Idle = {
     Ring1 = "Sattva Ring",
     Ring2 = "Shadow Ring",
     Back = "Shadow Mantle",
-    Waist = "Steppe Sash",
+    Waist = {{ Name = "Muscle Belt +1", When = MuscleBeltPredicate},
+             { Name = "Steppe Sash" }},
     Legs = "Dst. Subligar +1",
     Feet = "Dst. Leggings +1",
 }
 
 layers.Sets.Staff.Engaged = layers.Sets.Idle
 
-layers.Sets['Dusk to Dawn && Kite'].Idle = { Feet = "Nin. Kyahan +1" }
-layers.Sets[BuffaloRegenPredicate].Idle = { Head = "Dream Ribbon", Waist = "Muscle Belt +1" }
-layers.Sets[RefreshPredicate].Idle = { Body = "Blue Cotehardie" }
-layers.Sets.Regen.Idle = { Head = "Dream Ribbon" }
-layers.Sets[MuscleRegenPredicate].Idle = { Waist = "Muscle Belt +1" }
+layers.Sets.Kite.Idle = { Feet = { Name = "Nin. Kyahan +1", When = "Dusk to Dawn" }}
+layers.Sets.Refresh.Idle = { Body = { Name = "Blue Cotehardie", When = RefreshPredicate }}
+layers.Sets.Buffalo.Idle = { Body = { Name = "Blue Cotehardie", When = RefreshPredicate }}
 layers.Sets.Staff.Idle = { Main = "Terra's Staff" }
 layers.Sets.Katana.Idle = { Main = "Fudo", Sub = "Fudo" }
 layers.Sets.Club.Idle = { Sub = "Octave Club" }
@@ -80,7 +80,8 @@ local HP = {
     Ear1 = "Cassie Earring",
     Hands = "Seiryu's Kote",
     Ring1 = "Sattva Ring",
-    Ring2 = "Bomb Queen Ring",
+    Ring2 = {{ Name = "Bomb Queen Ring", When = "BQR"},
+             { Name = "Bloodbead Ring" }},
     Back = "Gigant Mantle",
     Waist = "Steppe Sash",
 }
@@ -105,7 +106,6 @@ local PDT = {
 }
 
 layers.Sets.HP.Idle = HP
-layers.Sets['HP && ~BQR'].Idle = { Ring2 = "Bloodbead Ring" }
 layers.Sets.MDT.Idle = MDT
 layers.Sets.PDT.Idle = PDT
 layers.Sets.Evasion.Idle = Evasion
@@ -177,16 +177,17 @@ layers.Sets.Melee.Engaged = {
     Ear1 = "Brutal Earring",
     Ear2 = "Stealth Earring",
     Body = "Nin. Chainmail +1",
-    Hands = "Dusk Gloves",
+    Hands = {{ Name = "Kog. Tekko +1", When = "Dusk to Dawn"},
+             { Name = "Dusk Gloves" }},
     Ring1 = "Toreador's Ring",
-    Ring2 = "Toreador's Ring",
+    Ring2 = {{ Name = "Shinobi Ring", When = ShinobiRingPredicate },
+             { Name = "Toreador's Ring" }},
     Back = "Forager's Mantle",
     Waist = "Koga Sarashi",
     Legs = "Byakko's Haidate",
     Feet = "Fuma Sune-ate",
 }
 
-layers.Sets[ShinobiRingPredicate].Melee.Engaged = { Ring2 = "Shinobi Ring" }
 layers.Sets[ShinobiEarringPredicate].Melee.Engaged = {
     Head = "Arh. Jinpachi +1",
     Ear2 = "Shinobi Earring",
@@ -194,8 +195,6 @@ layers.Sets[ShinobiEarringPredicate].Melee.Engaged = {
     Waist = "Warwolf Belt",
     Feet = "Nin. Kyahan +1"
 }
-
-layers.Sets['Dusk to Dawn && Melee'].Engaged = { Hands = "Kog. Tekko +1" }
 layers.Sets.Engaged.Katana = layers.Sets.Idle.Katana
 layers.Sets.Engaged.Staff = layers.Sets.Idle.Staff
 layers.Sets.Engaged.Club = layers.Sets.Idle.Club
@@ -230,25 +229,24 @@ local HPMaintenance = {
 }
 
 layers.Sets.Interimcast = layers.Sets.Idle
+layers.Sets.Refresh.Interimcast = layers.Sets.Refresh.Idle
 layers.Sets.PDT.Interimcast = PDT
 layers.Sets.MDT.Interimcast = MDT
 layers.Sets.HP.Interimcast = HPMaintenance
-layers.Sets[RefreshPredicate].Interimcast = { Body = "Blue Cotehardie" }
+layers.Sets.Lightning.Interimcast = layers.Sets.Lightning.Idle
+layers.Sets.Ice.Interimcast = layers.Sets.Ice.Idle
+layers.Sets.Fire.Interimcast = layers.Sets.Fire.Idle
+layers.Sets.Earth.Interimcast = layers.Sets.Earth.Idle
 
 -- Precast
 
-layers.Sets.Precast = { Ear2 = "Loquac. Earring" }
+layers.Sets.Precast = { 
+    Ear2 = "Loquac. Earring",
+    Back = { Name = "Warlock's Mantle", When = "Player Subjob == RDM" }
+}
 layers.Sets.HP.Precast = HPMaintenance
 
-layers.Sets['Player Subjob == Red Mage'].Precast = { Back = "Warlock's Mantle" }
-
 -- Midcast
-
-layers.Sets[ShinobiEarringPredicate].Midcast = { Ear2 = "Shinobi Earring" }
-layers.Sets[ShinobiEarringPredicate].Midcast['Elemental Ninjutsu'] = { 
-    Waist = "Ryl.Kgt. Belt",
-    Legs = "Yasha Hakama +1",
-}
 
 layers.Sets.HP.Midcast = {
     Hands = "Seiryu's Kote",
@@ -261,16 +259,20 @@ layers.Sets.HP.Midcast = {
 layers.Sets.Midcast['Elemental Ninjutsu'] = {
     Ammo = "Ensorcelled Shard",
     Head = "Yasha Jinpachi +1",
-    Neck = "Prudence Torque",
+    Neck = {{ Name = "Uggalepih Pendant", When = "Player MPP After Cast < 50" },
+            { Name = "Prudence Torque" }},
     Ear1 = "Novio Earring",
-    Ear2 = "Moldavite Earring",
+    Ear2 = {{ Name = "Shinobi Earring", When = ShinobiEarringPredicate},
+            { Name = "Moldavite Earring" }},
     Body = "Kirin's Osode",
     Hands = "Kog. Tekko +1",
     Ring1 = "Omniscient Ring",
     Ring2 = "Omniscient Ring",
     Back = "Astute Cape",
-    Waist = "Koga Sarashi",
-    Legs = "Byakko's Haidate",
+    Waist = {{ Name = "", When = ShinobiEarringPredicate},
+            { Name = "Koga Sarashi" }},
+    Legs = {{ Name = "", When = ShinobiEarringPredicate},
+            { Name = "Byakko's Haidate" }},
     Feet = "Nin. Kyahan +1",
 }
 
@@ -296,10 +298,6 @@ layers.Sets.FullAcc.Midcast['Elemental Ninjutsu'] = {
     Feet = "Kog. Kyahan +1",
 }
 
-layers.Sets['Player MPP After Cast < 50 && ~FullAcc'].Midcast['Elemental Ninjutsu'] = {
-    Neck = "Uggalepih Pendant"
-}
-
 layers.Sets.Midcast['Enfeebling Ninjutsu'] = {
     Ammo = "Ensorcelled Shard",
     Head = "Yasha Jinpachi +1",
@@ -321,15 +319,13 @@ layers.Sets.Midcast.Utsusemi = {
     Ear1 = "Loquac. Earring",
     Ear2 = "Ethereal Earring",
     Body = "Arhat's Gi +1",
-    Hands = "Dusk Gloves",
+    Hands = {{ Name = "Kog. Tekko +1", When = "Dusk to Dawn"},
+             { Name = "Dusk Gloves"}},
     Ring1 = "Sattva Ring",
     Waist = "Koga Sarashi",
     Legs = "Byakko's Haidate",
     Feet = "Fuma Sune-ate",
 }
-
-
-layers.Sets['Dusk to Dawn'].Midcast.Utsusemi = { Hands = "Kog. Tekko +1" }
 
 -- Enfeebling memes
 
@@ -437,6 +433,8 @@ local TankEnmity = {
     Feet = "Ysh. Sune-ate +1",
 }
 
+local PlayerNamePredicate = ("Action Target Name == %s"):format(gData.GetPlayer().Name)
+
 local TankCure = {
     Main = "Apollo's Staff",
     Ammo = "Nokizaru Shuriken",
@@ -445,10 +443,13 @@ local TankCure = {
     Ear1 = "Hades Earring +1",
     Ear2 = "Eris' Earring +1",
     Body = "Arhat's Gi +1",
-    Hands = "Dusk Gloves",
+    Hands = {{ Name = "Seiryu's Kote", When = PlayerNamePredicate },
+             { Name = "Dusk Gloves" }},
     Ring1 = "Sattva Ring",
-    Ring2 = "Mermaid's Ring",
-    Back = "Resentment Cape",
+    Ring2 = {{ Name = "Bomb Queen Ring", When = PlayerNamePredicate },
+             { Name = "Mermaid's Ring" }},
+    Back = {{ Name = "Gigant Mantle", When = PlayerNamePredicate },
+            { Name = "Resentment Cape" }},
     Waist = "Steppe Sash",
     Legs = "Yasha Hakama +1",
     Feet = "Ysh. Sune-ate +1",
@@ -462,13 +463,6 @@ layers.Sets.Tank.Midcast.Bind = TankRecast
 layers.Sets.Tank.Midcast.Aspir = TankRecast
 layers.Sets.Tank.Midcast.Barspell = TankEnmity
 layers.Sets.Tank.Midcast.Cure = TankCure
-local SelfCurePredicate = ('Tank && Action Target Name == %s'):format(gData.GetPlayer().Name)
-layers.Sets[SelfCurePredicate].Midcast.Cure = {
-    Hands = "Seiryu's Kote",
-    Ring2 = "Bomb Queen Ring",
-    Back = "Gigant Mantle",
-}
-
 layers.Sets.Tank.Ability = TankEnmity
 
 -- Obis 
