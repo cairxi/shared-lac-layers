@@ -50,7 +50,6 @@ layers.Sets.Idle = {
 }
 
 layers.Sets.Staff.Engaged = layers.Sets.Idle
-
 layers.Sets.Kite.Idle = { Feet = { Name = "Nin. Kyahan +1", When = "Dusk to Dawn" }}
 layers.Sets.Refresh.Idle = { Body = { Name = "Blue Cotehardie", When = RefreshPredicate }}
 layers.Sets.Buffalo.Idle = { Body = { Name = "Blue Cotehardie", When = RefreshPredicate }}
@@ -195,6 +194,7 @@ layers.Sets[ShinobiEarringPredicate].Melee.Engaged = {
     Waist = "Warwolf Belt",
     Feet = "Nin. Kyahan +1"
 }
+
 layers.Sets.Engaged.Katana = layers.Sets.Idle.Katana
 layers.Sets.Engaged.Staff = layers.Sets.Idle.Staff
 layers.Sets.Engaged.Club = layers.Sets.Idle.Club
@@ -269,9 +269,9 @@ layers.Sets.Midcast['Elemental Ninjutsu'] = {
     Ring1 = "Omniscient Ring",
     Ring2 = "Omniscient Ring",
     Back = "Astute Cape",
-    Waist = {{ Name = "", When = ShinobiEarringPredicate},
+    Waist = {{ Name = "Ryl.Kgt. Belt", When = ShinobiEarringPredicate},
             { Name = "Koga Sarashi" }},
-    Legs = {{ Name = "", When = ShinobiEarringPredicate},
+    Legs = {{ Name = "Yasha Hakama +1", When = ShinobiEarringPredicate},
             { Name = "Byakko's Haidate" }},
     Feet = "Nin. Kyahan +1",
 }
