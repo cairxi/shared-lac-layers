@@ -19,7 +19,7 @@ local dart = layers.CreateModeGroup('Dart', {'Off','Dart'})
 
 -- Idle / Engaged / Resting
 
-layers.Sets.Idle = {
+local Default = {
     Ammo = "Happy Egg",
     Head = "Dls. Chapeau +1",
     Neck = "Jeweled Collar +1",
@@ -35,19 +35,6 @@ layers.Sets.Idle = {
     Legs = "Dst. Subligar +1",
     Feet = "Dst. Leggings +1",
 }
-
-layers.Sets.Staff.Idle = { Main = "Terra's Staff" }
-layers.Sets.Mistilteinn.Idle = {
-    Main = "Mistilteinn",
-    Sub = "Genbu's Shield"
-}
-
-layers.Sets.Refresh.Idle = {
-    Head = "Dls. Chapeau +1",
-    Body = "Dalmatica",
-}
-
-layers.Sets.Dart.Idle = { Ammo = "Dart" }
 
 local PDT = {
     Ammo = "Happy Egg",
@@ -81,6 +68,23 @@ local BDT = {
     Legs = "Bahamut's Hose",
 }
 
+layers.Sets.Idle = Default
+layers.Sets.PDT.Idle = PDT
+layers.Sets.IdlePDT.Idle = PDT
+layers.Sets.MDT.Idle = MDT
+layers.Sets.IdleMDT.Idle = MDT
+layers.Sets.BDT.Idle = BDT
+
+layers.Sets.Staff.Idle = { Main = "Terra's Staff" }
+layers.Sets.Mistilteinn.Idle = { Main = "Mistilteinn", Sub = "Genbu's Shield" }
+layers.Sets.Kite.Idle = { Legs = "Blood Cuisses" }
+layers.Sets.Dart.Idle = { Ammo = "Dart" }
+
+layers.Sets.Refresh.Idle = {
+    Head = "Dls. Chapeau +1",
+    Body = "Dalmatica",
+}
+
 layers.Sets.IdleHP.Idle = {
     ring2 = "Bloodbead Ring",
     waist = "Steppe Sash",
@@ -93,14 +97,6 @@ layers.Sets.IdleMP.Idle = {
     Neck = "Uggalepih Pendant",
     Waist = "Hierarch Belt",
 }
-
-layers.Sets.PDT.Idle = PDT
-layers.Sets.IdlePDT.Idle = PDT
-layers.Sets.MDT.Idle = MDT
-layers.Sets.IdleMDT.Idle = MDT
-layers.Sets.BDT.Idle = BDT
-
-layers.Sets.Kite.Idle = { Legs = "Blood Cuisses" }
 
 layers.Sets.Lightning.Idle = {
     Main = "Terra's Staff",
@@ -185,26 +181,26 @@ layers.Sets['Refresh && Melee'].Engaged = {
 
 -- Interim Sets
 
-layers.Sets.Interimcast = layers.Sets.Idle
+layers.Sets.Interimcast = Default
+layers.Sets.PDT.Interimcast = PDT
+layers.Sets.MDT.Interimcast = MDT
 layers.Sets.IdleHP.Interimcast = layers.Sets.IdleHP.Idle
 layers.Sets.IdleMDT.Interimcast = layers.Sets.IdleMDT.Idle
 layers.Sets.IdlePDT.Interimcast = layers.Sets.IdlePDT.Idle
-layers.Sets.PDT.Interimcast = PDT
-layers.Sets.MDT.Interimcast = MDT
 layers.Sets.Refresh.Interimcast = layers.Sets.Refresh.Idle
 layers.Sets.HP.Interimcast = {
-    Ammo = "Happy Egg",
-    Ear1 = { Name = "Cassie Earring", When = "Tank" },
-    Ring1 = "Sattva Ring",
-    Ring2 = "Bloodbead Ring",
-    Back = "Gigant Mantle",
-    Waist = "Steppe Sash",
+    Ammo = { Name = "Happy Egg", Priority = 100 },
+    Ear1 = { Name = "Cassie Earring", When = "Tank", Priority = 100 },
+    Ring1 = { Name = "Sattva Ring", Priority = 100 },
+    Ring2 = { Name = "Bloodbead Ring", Priority = 100 },
+    Back = { Name = "Gigant Mantle", Priority = 100 },
+    Waist = { Name =  "Steppe Sash", Priority = 100 }
 }
 
 layers.Sets.MP.Interimcast = {
-    Ammo = "Dream Sand",
-    Ear1 = "Loquac. Earring",
-    Waist = "Hierarch Belt"
+    Ammo = { Name = "Dream Sand", Priority = 100 },
+    Ear1 = { Name = "Loquac. Earring", Priority = 100 },
+    Waist = { Name = "Hierarch Belt", Priority = 100 },
 }
 
 -- Precast Sets
