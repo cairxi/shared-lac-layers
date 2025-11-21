@@ -244,7 +244,7 @@ local MaxPotency = {
     Body = "Igqira Weskit",
     Hands = "Zenith Mitts",
     Ring1 = "Omniscient Ring",
-    Ring2 = {{ Name = "Sorcerer's Ring", When = "Sorc" },
+    Ring2 = {{ Name = "Sorcerer's Ring", When = "SorcRing" },
              { Name = "Omniscient Ring" }},
     Back = "Prism Cape",
     Waist = "Sorcerer's Belt",
