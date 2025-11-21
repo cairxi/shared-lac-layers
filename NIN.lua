@@ -50,9 +50,9 @@ layers.Sets.Idle = {
 }
 
 layers.Sets.Staff.Engaged = layers.Sets.Idle
-layers.Sets.Kite.Idle = { Feet = {{ Name = "Nin. Kyahan +1", When = "Dusk to Dawn" }}}
-layers.Sets.Refresh.Idle = { Body = {{ Name = "Blue Cotehardie", When = RefreshPredicate }}}
-layers.Sets.Buffalo.Idle = { Body = {{ Name = "Blue Cotehardie", When = RefreshPredicate }}}
+layers.Sets.Kite.Idle = { Feet = { Name = "Nin. Kyahan +1", When = "Dusk to Dawn" }}
+layers.Sets.Refresh.Idle = { Body = { Name = "Blue Cotehardie", When = RefreshPredicate }}
+layers.Sets.Buffalo.Idle = { Body = { Name = "Blue Cotehardie", When = RefreshPredicate }}
 layers.Sets.Staff.Idle = { Main = "Terra's Staff" }
 layers.Sets.Katana.Idle = { Main = "Fudo", Sub = "Fudo" }
 layers.Sets.Club.Idle = { Sub = "Octave Club" }
@@ -243,7 +243,7 @@ layers.Sets.Earth.Interimcast = layers.Sets.Earth.Idle
 
 layers.Sets.Precast = { 
     Ear2 = "Loquac. Earring",
-    Back = {{ Name = "Warlock's Mantle", When = "Player Subjob == RDM" }}
+    Back = { Name = "Warlock's Mantle", When = "Player Subjob == RDM" }
 }
 
 layers.Sets.HP.Precast = HPMaintenance

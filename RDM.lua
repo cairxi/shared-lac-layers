@@ -194,7 +194,7 @@ layers.Sets.MDT.Interimcast = MDT
 layers.Sets.Refresh.Interimcast = layers.Sets.Refresh.Idle
 layers.Sets.HP.Interimcast = {
     Ammo = "Happy Egg",
-    Ear1 = {{ Name = "Cassie Earring", When = "Tank" }},
+    Ear1 = { Name = "Cassie Earring", When = "Tank" },
     Ring1 = "Sattva Ring",
     Ring2 = "Bloodbead Ring",
     Back = "Gigant Mantle",
@@ -321,7 +321,7 @@ local EnfeeblingSkillGear = {
     Neck = "Enfeebling Torque",
     Ear1 = "Enfeebling Earring",
     Body = "Wlk. Tabard +1",
-    Hands = {{ Name = "Mst.Cst. Bracelets", When = "Outside Nation Control" }},
+    Hands = { Name = "Mst.Cst. Bracelets", When = "Outside Nation Control" },
     Back = "Altruistic Cape",
     Legs = "Nashira Seraweels",
 }
@@ -440,8 +440,8 @@ layers.Sets.Midcast.Stoneskin = {
     Feet = "Dls. Boots +1"
 }
 
-layers.Sets.Midcast.Refresh = { Ring2 = {{ Name = "Dilation Ring", When = "Player MP >= 62" }}}
-layers.Sets.Midcast.Haste = { Ring2 = {{ Name = "Dilation Ring", When = "Player MP >= 50" }}}
+layers.Sets.Midcast.Refresh = { Ring2 = { Name = "Dilation Ring", When = "Player MP >= 62" }}
+layers.Sets.Midcast.Haste = { Ring2 = { Name = "Dilation Ring", When = "Player MP >= 50" }}
 
 layers.Sets.Midcast.Sneak = {
     Back = "Skulker's Cape",

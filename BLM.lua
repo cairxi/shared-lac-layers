@@ -91,7 +91,7 @@ layers.Sets.MDT.Interimcast = MDT
 layers.Sets.Precast = {
     Ear2 = "Loquac. Earring",
     Feet = "Rostrum Pumps",
-    Back = {{ Name = "Warlock's Mantle", When = "Player Subjob == Red Mage" }}
+    Back = { Name = "Warlock's Mantle", When = "Player Subjob == Red Mage" }
 }
 
 -- Midcast sets
