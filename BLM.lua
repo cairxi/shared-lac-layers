@@ -91,7 +91,7 @@ layers.Sets.MDT.Interimcast = MDT
 layers.Sets.Precast = {
     Ear2 = "Loquac. Earring",
     Feet = "Rostrum Pumps",
-    Back = {{ Name = "Warlock's Mantle", When = "Player Subjob == RDM" }}
+    Back = {{ Name = "Warlock's Mantle", When = "Player Subjob == Red Mage" }}
 }
 
 -- Midcast sets
@@ -177,26 +177,6 @@ layers.Sets.Potency.Midcast.Blind = {
     Back = "Prism Cape",
     Legs = "Mahatma Slops",
 }
-
--- Ele Dots
-
-layers.Sets.Midcast['Enfeebling Elemental'] = {
-    Ammo = "Phtm. Tathlum",
-    Neck = "Prudence Torque",
-    Head = "Wzd. Petasos +1",
-    Ear1 = "Abyssal Earring",
-    Ear2 = "Omn. Earring +1",
-    Body = "Mahatma Hpl.",
-    Hands = "Wzd. Gloves +1",
-    Ring1 = "Omniscient Ring",
-    Ring2 = "Omniscient Ring",
-    Back = "Prism Cape",
-    Waist = "Sorcerer's Belt",
-    Legs = "Mahatma Slops",
-    Feet = "Src. Sabots +1",
-}
-
-layers.Sets.Enmity.Midcast['Enfeebling Elemental'] = layers.Sets.Midcast['Enfeebling Elemental']
 
 -- Dark Magic
 
@@ -312,6 +292,26 @@ layers.Sets.FullAcc.Midcast.Elemental = {
     Back = "Merciful Cape",
     Feet = "Nashira Crackows",
 }
+
+-- Ele Dots
+
+layers.Sets.Midcast['Enfeebling Elemental'] = {
+    Ammo = "Phtm. Tathlum",
+    Neck = "Prudence Torque",
+    Head = "Wzd. Petasos +1",
+    Ear1 = "Abyssal Earring",
+    Ear2 = "Omn. Earring +1",
+    Body = "Mahatma Hpl.",
+    Hands = "Wzd. Gloves +1",
+    Ring1 = "Omniscient Ring",
+    Ring2 = "Omniscient Ring",
+    Back = "Prism Cape",
+    Waist = "Sorcerer's Belt",
+    Legs = "Mahatma Slops",
+    Feet = "Src. Sabots +1",
+}
+
+layers.Sets.Enmity.Midcast['Enfeebling Elemental'] = layers.Sets.Midcast['Enfeebling Elemental']
 
 -- Obis
 
