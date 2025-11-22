@@ -1,4 +1,4 @@
-local layers = gFunc.LoadFile('layers\\layers.lua')
+local layers = gFunc.LoadFile('layers/layers.lua')
 
 local idle = layers.CreateModeGroup('IdleStyle', {'Off','IdlePDT','IdleMDT','IdleHP','IdleMP'},'i')
 local resists = layers.CreateModeGroup('Resist', {'Off','Lightning'},'+r')

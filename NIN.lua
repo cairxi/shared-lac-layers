@@ -1,4 +1,4 @@
-local layers = gFunc.LoadFile('layers\\layers.lua')
+local layers = gFunc.LoadFile('layers/layers.lua')
 
 local bqr = layers.CreateModeGroup('BQR',{'BQR','Off'})
 local weapon = layers.CreateModeGroup('Weapon',{'Staff','Katana'},'m')

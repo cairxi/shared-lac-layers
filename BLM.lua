@@ -1,4 +1,4 @@
-local layers = gFunc.LoadFile('layers\\layers.lua')
+local layers = gFunc.LoadFile('layers/layers.lua')
 
 local pdt = layers.CreateModeGroup('PDT', {'Off', 'PDT'}, '2')
 local mdt = layers.CreateModeGroup('MDT', {'Off', 'MDT'}, '1')
@@ -11,7 +11,7 @@ local weapons = layers.CreateModeGroup('Weapon', {'Staff','Mistilteinn'})
 
 -- Idle Sets
 
-layers.Sets.Idle = {
+local Default = {
     Ammo = "Happy Egg",
     Head = "Dream Ribbon",
     Neck = "Jeweled Collar +1",
@@ -27,9 +27,6 @@ layers.Sets.Idle = {
     Legs = "Src. Tonban +1",
     Feet = "Src. Sabots +1",
 }
-
-layers.Sets.Staff.Idle = { Main = "Terra's Staff" }
-layers.Sets.Mistilteinn.Idle = { Main = "Mistilteinn", Sub = "Genbu's Shield" }
 
 local MDT = {
     Ammo = "Phtm. Tathlum",
@@ -55,8 +52,12 @@ local PDT = {
             { Name = "Shadow Mantle" }}
 }
 
+layers.Sets.Idle = Default
 layers.Sets.PDT.Idle = PDT
 layers.Sets.MDT.Idle = MDT
+
+layers.Sets.Staff.Idle = { Main = "Terra's Staff" }
+layers.Sets.Mistilteinn.Idle = { Main = "Mistilteinn", Sub = "Genbu's Shield" }
 
 layers.Sets.Resting = {
     Main = "Pluto's Staff",
@@ -80,7 +81,7 @@ layers.Sets.PDT.Resting = PDT
 
 -- Interim sets
 
-layers.Sets.Interimcast = layers.Sets.Idle
+layers.Sets.Interimcast = Default
 layers.Sets.PDT.Interimcast = PDT
 layers.Sets.MDT.Interimcast = MDT
 
