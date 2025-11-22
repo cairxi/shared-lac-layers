@@ -1,7 +1,5 @@
 local layers = gFunc.LoadFile('layers\\layers.lua')
 
-AshitaCore:GetChatManager():QueueCommand(-1,'/macro book 1')
-
 local pdt = layers.CreateModeGroup('PDT', {'Off', 'PDT'}, '2')
 local mdt = layers.CreateModeGroup('MDT', {'Off', 'MDT'}, '1')
 local mb = layers.CreateModeGroup('MB', {'Off','MB'}, 'b')
@@ -414,6 +412,7 @@ local lockstyle = {
 layers.UserOnLoad = function()
     gSettings.AllowAddSet = false
     gFunc.LockStyle(lockstyle)
+    AshitaCore:GetChatManager():QueueCommand(-1,'/macro book 1')
 end
 
 -- Sticky items

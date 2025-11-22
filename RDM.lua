@@ -28,7 +28,7 @@ local Default = {
     Hands = "Dls. Gloves +1",
     Ring1 = "Sattva Ring",
     Ring2 = "Shadow Ring",
-    Back = {{ Name = "Umbra Cape", When = "Nighttime && ~MDT" },
+    Back = {{ Name = "Umbra Cape", When = "Nighttime" },
             { Name = "Shadow Mantle" }},
     Waist = "Hierarch Belt",
     Legs = "Dst. Subligar +1",
@@ -599,6 +599,21 @@ layers.RegisterCallback("PreHandleMidcast", function(spell)
     end
 end, "Midcast Mid Delay")
 
+local lockstyle = {
+    Main = "Levin",
+    Head = "Dls. Chapeau +1",
+    Body = "Dalmatica",
+    Hands = "Merman's Bangles",
+    Legs = "Nashira Seraweels",
+    Feet = "Nashira Crackows",
+}
+
+layers.UserOnLoad = function()
+    gSettings.AllowAddSet = false
+    gFunc.LockStyle(lockstyle)
+    AshitaCore:GetChatManager():QueueCommand(-1,'/macro book 2')
+end
+
 -- Sticky items
 
 local ChargedItems = {
@@ -610,7 +625,5 @@ local ChargedItems = {
 }
 
 for _,v in pairs(ChargedItems) do layers.AddChargedItem(v) end
-
-AshitaCore:GetChatManager():QueueCommand(-1,'/macro book 2')
 
 return layers
