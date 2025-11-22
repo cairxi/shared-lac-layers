@@ -2,6 +2,7 @@ local layers = gFunc.LoadFile('layers/layers.lua')
 
 local idle = layers.CreateModeGroup('IdleStyle', {'Off','IdlePDT','IdleMDT','IdleHP','IdleMP'},'i')
 local resists = layers.CreateModeGroup('Resist', {'Off','Lightning'},'+r')
+local melee = layers.CreateModeGroup('Melee', {'Off', 'Melee'},'+m')
 local refresh = layers.CreateModeGroup('Refresh',{'Refresh','Off'},'+2')
 local bqr = layers.CreateModeGroup('BQR',{'BQR','Off'})
 local weapon = layers.CreateModeGroup('Weapon',{'Staff','Mistilteinn','Sword','Dagger','Club'},'m')
@@ -11,7 +12,6 @@ local mdt = layers.CreateModeGroup('MDT', {'Off', 'MDT'}, '1')
 local bdt = layers.CreateModeGroup('BDT', {'Off', 'BDT'}, '3')
 local mp = layers.CreateModeGroup('MP', {'Off', 'MP'}, '5')
 local hp = layers.CreateModeGroup('HP', {'Off', 'HP'}, '4')
-local melee = layers.CreateModeGroup('Melee', {'Off', 'Melee'},'+m')
 local tank = layers.CreateModeGroup('Tank', {'Off', 'Tank'},'+t')
 local cast_style = layers.CreateModeGroup('Cast Style',{'Off','Potency','Accuracy'},'+1')
 local dart = layers.CreateModeGroup('Dart', {'Off','Dart'})
@@ -177,6 +177,7 @@ layers.Sets.Sword.Resting = Joyeuse
 layers.Sets.Dagger.Resting = MartialKnife
 layers.Sets.Club.Resting = ClubMain
 
+layers.Sets.Engaged = Default
 layers.Sets.Melee.Engaged = {
     Head = "Nashira Turban",
     Neck = "Dream Collar",
@@ -193,9 +194,19 @@ layers.Sets.Melee.Engaged = {
     Feet = "Nashira Crackows",
 }
 
-layers.Sets['Refresh && Melee'].Engaged = {
-    Head = "Dls. Chapeau +1",
-    Body = "Dalmatica",
+layers.Sets.Refresh.Engaged = layers.Sets.Refresh.Idle
+
+layers.Sets.Weaponskill = {
+    Neck = "Dream Collar",
+    Ear1 = "Brutal Earring",
+    Ear2 = "Tmph. Earring +1",
+    Body = "Hydra Doublet",
+    Hands = "Hydra Gloves",
+    Ring1 = "Triumph Ring",
+    Ring2 = "Triumph Ring",
+    Back = "Forager's Mantle",
+    Waist = "Warwolf Belt",
+    Feet = "Hydra Gaiters",
 }
 
 -- Interim Sets
@@ -263,6 +274,8 @@ layers.Sets.Midcast.Cure = {
     Legs = "Mahatma Slops",
     Feet = "Hydra Gaiters",
 }
+
+layers.Sets.Staff.Midcast.Cure = { Main = "Apollo's Staff" }
 
 -- Enfeebling
 
@@ -534,17 +547,17 @@ layers.Sets['Environment Score > 0'].Midcast['Dark Affinity'] = { Waist = "Anrin
 
 -- Staves
 
-layers.Sets.Midcast['Earth Magic Damage'] = { Main ="Terra's Staff" }
-layers.Sets.Midcast['Earth Enfeeblement'] = { Main ="Terra's Staff" }
-layers.Sets.Midcast['Lightning Magic Damage'] = { Main ="Jupiter's Staff" }
-layers.Sets.Midcast['Water Magic Damage'] = { Main ="Neptune's Staff" }
-layers.Sets.Midcast['Water Enfeeblement'] = { Main ="Neptune's Staff" }
-layers.Sets.Midcast['Fire Magic Damage'] = { Main ="Vulcan's Staff" }
-layers.Sets.Midcast['Ice Magic Damage'] = { Main = "Aquilo's Staff" }
-layers.Sets.Midcast['Ice Enfeeblement'] = { Main = "Aquilo's Staff" }
-layers.Sets.Midcast['Wind Magic Damage'] = { Main ="Auster's Staff" }
-layers.Sets.Midcast['Wind Enfeeblement'] = { Main ="Auster's Staff" }
-layers.Sets.Midcast['Dark Affinity'] = { Main ="Pluto's Staff" }
+layers.Sets.Staff.Midcast['Earth Magic Damage'] = { Main ="Terra's Staff" }
+layers.Sets.Staff.Midcast['Earth Enfeeblement'] = { Main ="Terra's Staff" }
+layers.Sets.Staff.Midcast['Lightning Magic Damage'] = { Main ="Jupiter's Staff" }
+layers.Sets.Staff.Midcast['Water Magic Damage'] = { Main ="Neptune's Staff" }
+layers.Sets.Staff.Midcast['Water Enfeeblement'] = { Main ="Neptune's Staff" }
+layers.Sets.Staff.Midcast['Fire Magic Damage'] = { Main ="Vulcan's Staff" }
+layers.Sets.Staff.Midcast['Ice Magic Damage'] = { Main = "Aquilo's Staff" }
+layers.Sets.Staff.Midcast['Ice Enfeeblement'] = { Main = "Aquilo's Staff" }
+layers.Sets.Staff.Midcast['Wind Magic Damage'] = { Main ="Auster's Staff" }
+layers.Sets.Staff.Midcast['Wind Enfeeblement'] = { Main ="Auster's Staff" }
+layers.Sets.Staff.Midcast['Dark Affinity'] = { Main ="Pluto's Staff" }
 
 
 -- Cure cheat logic
