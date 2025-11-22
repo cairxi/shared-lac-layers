@@ -3,6 +3,7 @@ local layers = gFunc.LoadFile('layers\\layers.lua')
 local idle = layers.CreateModeGroup('IdleStyle', {'Off','IdlePDT','IdleMDT','IdleHP','IdleMP'},'i')
 local resists = layers.CreateModeGroup('Resist', {'Off','Lightning'},'+r')
 local refresh = layers.CreateModeGroup('Refresh',{'Refresh','Off'},'+2')
+local bqr = layers.CreateModeGroup('BQR',{'BQR','Off'})
 local weapon = layers.CreateModeGroup('Weapon',{'Staff','Mistilteinn','Sword','Dagger','Club'},'m')
 local kite = layers.CreateModeGroup('Kite',{'Kite','Off'}, 'k')
 local pdt = layers.CreateModeGroup('PDT', {'Off', 'PDT'}, '2')
@@ -66,17 +67,30 @@ local BDT = {
     Legs = "Bahamut's Hose",
 }
 
+local HP = {
+    Ammo = { Name = "Happy Egg", Priority = 100 },
+    Ear1 = { Name = "Cassie Earring", When = "Tank", Priority = 100 },
+    Ring1 = { Name = "Sattva Ring", Priority = 100 },
+    Ring2 = {{ Name = "Bomb Queen Ring", When = "BQR"},
+             { Name = "Bloodbead Ring" }},
+    Back = { Name = "Gigant Mantle", Priority = 100 },
+    Waist = { Name =  "Steppe Sash", Priority = 100 }
+}
+
+local MP = {
+    Ammo = { Name = "Dream Sand", Priority = 100 },
+    Ear1 = { Name = "Loquac. Earring", Priority = 100 },
+    Waist = { Name = "Hierarch Belt", Priority = 100 },
+}
+
 layers.Sets.Idle = Default
 layers.Sets.PDT.Idle = PDT
-layers.Sets.IdlePDT.Idle = PDT
 layers.Sets.MDT.Idle = MDT
-layers.Sets.IdleMDT.Idle = MDT
 layers.Sets.BDT.Idle = BDT
-
-layers.Sets.Staff.Idle = { Main = "Terra's Staff" }
-layers.Sets.Mistilteinn.Idle = { Main = "Mistilteinn", Sub = "Genbu's Shield" }
-layers.Sets.Kite.Idle = { Legs = "Blood Cuisses" }
-layers.Sets.Dart.Idle = { Ammo = "Dart" }
+layers.Sets.HP.Idle = HP
+layers.Sets.MP.Idle = MP
+layers.Sets.IdlePDT.Idle = PDT
+layers.Sets.IdleMDT.Idle = MDT
 
 layers.Sets.Refresh.Idle = {
     Head = "Dls. Chapeau +1",
@@ -127,6 +141,13 @@ layers.Sets.Resting = {
              { Name = "Baron's Slops" }},
     Feet = "Hydra Gaiters",
 }
+
+-- Weapons
+
+layers.Sets.Staff.Idle = { Main = "Terra's Staff" }
+layers.Sets.Mistilteinn.Idle = { Main = "Mistilteinn", Sub = "Genbu's Shield" }
+layers.Sets.Kite.Idle = { Legs = "Blood Cuisses" }
+layers.Sets.Dart.Idle = { Ammo = "Dart" }
 
 -- Melee memes
 
@@ -183,25 +204,14 @@ layers.Sets.Interimcast = Default
 layers.Sets.PDT.Interimcast = PDT
 layers.Sets.MDT.Interimcast = MDT
 layers.Sets.BDT.Interimcast = BDT
+layers.Sets.HP.Interimcast = HP
+layers.Sets.MP.Interimcast = MP
 layers.Sets.IdleHP.Interimcast = layers.Sets.IdleHP.Idle
 layers.Sets.IdleMDT.Interimcast = layers.Sets.IdleMDT.Idle
 layers.Sets.IdlePDT.Interimcast = layers.Sets.IdlePDT.Idle
 layers.Sets.Refresh.Interimcast = layers.Sets.Refresh.Idle
 
-layers.Sets.HP.Interimcast = {
-    Ammo = { Name = "Happy Egg", Priority = 100 },
-    Ear1 = { Name = "Cassie Earring", When = "Tank", Priority = 100 },
-    Ring1 = { Name = "Sattva Ring", Priority = 100 },
-    Ring2 = { Name = "Bloodbead Ring", Priority = 100 },
-    Back = { Name = "Gigant Mantle", Priority = 100 },
-    Waist = { Name =  "Steppe Sash", Priority = 100 }
-}
 
-layers.Sets.MP.Interimcast = {
-    Ammo = { Name = "Dream Sand", Priority = 100 },
-    Ear1 = { Name = "Loquac. Earring", Priority = 100 },
-    Waist = { Name = "Hierarch Belt", Priority = 100 },
-}
 
 -- Precast Sets
 
@@ -235,7 +245,7 @@ layers.Sets.Midcast = {
 
 -- Hp/Mp maintenance
 
-layers.Sets.HP.Midcast = layers.Sets.HP.Interimcast
+layers.Sets.HP.Midcast = HP
 layers.Sets.MP.Midcast = layers.Sets.MP.Interimcast
 
 -- Healing
