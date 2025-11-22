@@ -1,7 +1,5 @@
 local layers = gFunc.LoadFile('layers\\layers.lua')
 
-AshitaCore:GetChatManager():QueueCommand(-1,'/macro book 2')
-
 local idle = layers.CreateModeGroup('IdleStyle', {'Off','IdlePDT','IdleMDT','IdleHP','IdleMP'},'i')
 local resists = layers.CreateModeGroup('Resist', {'Off','Lightning'},'+r')
 local refresh = layers.CreateModeGroup('Refresh',{'Refresh','Off'},'+2')
@@ -184,10 +182,12 @@ layers.Sets['Refresh && Melee'].Engaged = {
 layers.Sets.Interimcast = Default
 layers.Sets.PDT.Interimcast = PDT
 layers.Sets.MDT.Interimcast = MDT
+layers.Sets.BDT.Interimcast = BDT
 layers.Sets.IdleHP.Interimcast = layers.Sets.IdleHP.Idle
 layers.Sets.IdleMDT.Interimcast = layers.Sets.IdleMDT.Idle
 layers.Sets.IdlePDT.Interimcast = layers.Sets.IdlePDT.Idle
 layers.Sets.Refresh.Interimcast = layers.Sets.Refresh.Idle
+
 layers.Sets.HP.Interimcast = {
     Ammo = { Name = "Happy Egg", Priority = 100 },
     Ear1 = { Name = "Cassie Earring", When = "Tank", Priority = 100 },
@@ -494,7 +494,7 @@ layers.Sets.Tank.Midcast.Cure = {
              { Name = "Dusk Gloves" }},
     Ring1 = "Sattva Ring",
     Ring2 = {{ Name = "Bomb Queen Ring", When = PlayerNamePredicate },
-             { Name = "Mermaid's Ring" }},
+             { Name = "Mermaid Ring" }},
     Back = {{ Name = "Gigant Mantle", When = PlayerNamePredicate },
             { Name = "Resentment Cape" }},
     Waist = "Swift Belt",
@@ -515,7 +515,7 @@ layers.Sets.Tank.Midcast.Bind = HighRecast
 layers.Sets['Environment Score > 0'].Midcast['Lightning Magic Damage'] = { Waist = "Rairin Obi" }
 layers.Sets['Environment Score > 0'].Midcast['Water Magic Damage'] = { Waist = "Suirin Obi" }
 layers.Sets['Environment Score > 0'].Midcast['Water Enfeeblement'] = { Waist = "Suirin Obi" }
-layers.Sets['Environment Score > 0'].Midcast['Fire Magic Damage'] = { Waist = "Kairin Obi" }
+layers.Sets['Environment Score > 0'].Midcast['Fire Magic Damage'] = { Waist = "Karin Obi" }
 layers.Sets['Environment Score > 0'].Midcast['Ice Magic Damage'] = { Waist = "Hyorin Obi" }
 layers.Sets['Environment Score > 0'].Midcast['Ice Enfeeblement'] = { Waist = "Hyorin Obi" }
 layers.Sets['Environment Score > 0'].Midcast['Wind Magic Damage'] = { Waist = "Hyorin Obi" }
@@ -600,5 +600,7 @@ local ChargedItems = {
 }
 
 for _,v in pairs(ChargedItems) do layers.AddChargedItem(v) end
+
+AshitaCore:GetChatManager():QueueCommand(-1,'/macro book 2')
 
 return layers

@@ -318,7 +318,7 @@ layers.Sets.Enmity.Midcast['Enfeebling Elemental'] = layers.Sets.Midcast['Enfeeb
 layers.Sets['Environment Score > 0'].Midcast['Lightning Magic Damage'] = { Waist = "Rairin Obi" }
 layers.Sets['Environment Score > 0'].Midcast['Water Magic Damage'] = { Waist = "Suirin Obi" }
 layers.Sets['Environment Score > 0'].Midcast['Water Enfeeblement'] = { Waist = "Suirin Obi" }
-layers.Sets['Environment Score > 0'].Midcast['Fire Magic Damage'] = { Waist = "Kairin Obi" }
+layers.Sets['Environment Score > 0'].Midcast['Fire Magic Damage'] = { Waist = "Karin Obi" }
 layers.Sets['Environment Score > 0'].Midcast['Ice Magic Damage'] = { Waist = "Hyorin Obi" }
 layers.Sets['Environment Score > 0'].Midcast['Ice Enfeeblement'] = { Waist = "Hyorin Obi" }
 layers.Sets['Environment Score > 0'].Midcast['Wind Magic Damage'] = { Waist = "Hyorin Obi" }

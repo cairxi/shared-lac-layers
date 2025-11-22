@@ -449,7 +449,7 @@ local TankCure = {
              { Name = "Dusk Gloves" }},
     Ring1 = "Sattva Ring",
     Ring2 = {{ Name = "Bomb Queen Ring", When = PlayerNamePredicate },
-             { Name = "Mermaid's Ring" }},
+             { Name = "Mermaid Ring" }},
     Back = {{ Name = "Gigant Mantle", When = PlayerNamePredicate },
             { Name = "Resentment Cape" }},
     Waist = "Steppe Sash",
@@ -472,7 +472,7 @@ layers.Sets.Tank.Ability = TankEnmity
 layers.Sets['Environment Score > 0 && ~HP'].Midcast['Lightning Magic Damage'] = { Waist = "Rairin Obi" }
 layers.Sets['Environment Score > 0 && ~HP'].Midcast['Water Magic Damage'] = { Waist = "Suirin Obi" }
 layers.Sets['Environment Score > 0 && ~HP'].Midcast['Water Enfeeblement'] = { Waist = "Suirin Obi" }
-layers.Sets['Environment Score > 0 && ~HP'].Midcast['Fire Magic Damage'] = { Waist = "Kairin Obi" }
+layers.Sets['Environment Score > 0 && ~HP'].Midcast['Fire Magic Damage'] = { Waist = "Karin Obi" }
 layers.Sets['Environment Score > 0 && ~HP'].Midcast['Ice Magic Damage'] = { Waist = "Hyorin Obi" }
 layers.Sets['Environment Score > 0 && ~HP'].Midcast['Ice Enfeeblement'] = { Waist = "Hyorin Obi" }
 layers.Sets['Environment Score > 0 && ~HP'].Midcast['Wind Magic Damage'] = { Waist = "Hyorin Obi" }
