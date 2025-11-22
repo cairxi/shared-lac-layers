@@ -243,7 +243,7 @@ layers.Sets.Earth.Interimcast = layers.Sets.Earth.Idle
 
 layers.Sets.Precast = { 
     Ear2 = "Loquac. Earring",
-    Back = { Name = "Warlock's Mantle", When = "Player Subjob == RDM" }
+    Back = { Name = "Warlock's Mantle", When = "Player Subjob == Red Mage" }
 }
 
 layers.Sets.HP.Precast = HPMaintenance
@@ -271,7 +271,7 @@ layers.Sets.Midcast['Elemental Ninjutsu'] = {
     Ring1 = "Omniscient Ring",
     Ring2 = "Omniscient Ring",
     Back = "Astute Cape",
-    Waist = {{ Name = "Ryl.Kgt. Belt", When = ShinobiEarringPredicate},
+    Waist = {{ Name = "R.K. Belt +2", When = ShinobiEarringPredicate},
             { Name = "Koga Sarashi" }},
     Legs = {{ Name = "Yasha Hakama +1", When = ShinobiEarringPredicate},
             { Name = "Byakko's Haidate" }},
@@ -279,7 +279,7 @@ layers.Sets.Midcast['Elemental Ninjutsu'] = {
 }
 
 layers.Sets.Potency.Midcast['Elemental Ninjutsu'] = {
-    Waist = "Ryl.Kgt. Belt",
+    Waist = "R.K. Belt +2",
     Legs = "Yasha Hakama +1",
 }
 

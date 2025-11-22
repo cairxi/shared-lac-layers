@@ -11,7 +11,7 @@ local layers = gFunc.LoadFile('layers/layers.lua')
 
 local mdt = layers.CreateModeGroup('MDT', {'Off', 'MDT'}, '1')
 local pdt = layers.CreateModeGroup('PDT', {'Off', 'PDT'}, '2')
-local weapon = layers.CreateModeGroup('Weapon', {'Staff', 'Club', 'Dagger'})
+local weapon = layers.CreateModeGroup('Weapon', {'Staff', 'Club', 'Dagger'},'m')
 local acc = layers.CreateModeGroup('Ranged Acc.', {'Off','LowAcc','MidAcc','HighAcc'})
 local enmity = layers.CreateModeGroup('Enmity', {'Off','Enmity'})
 local bolts = layers.CreateModeGroup('Bolts', {'Off','Acid','Sleep','Blind','Bloody'})
@@ -71,7 +71,7 @@ layers.Sets.Gun.Preshot = {
 layers.Sets.Midshot = {
     Ring1 = "Puissance Ring",
     Ring2 = "Puissance Ring",
-    Hands = { Name = "Hunter's Bracers", When = "Player Status Effect == Barrage" },
+    -- Hands = { Name = "Htr. Bracers +1", When = "Player Status Effect == Barrage" },
     Waist = { Name = "R.K. Belt +2", When = "Inside Nation Control" },
     Feet = "Wonder Clomps",
 }
