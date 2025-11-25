@@ -1,4 +1,5 @@
 local layers = gFunc.LoadFile('layers/layers.lua')
+local sets = layers.Sets
 
 local pdt = layers.CreateModeGroup('PDT', {'Off', 'PDT'}, '2')
 local mdt = layers.CreateModeGroup('MDT', {'Off', 'MDT'}, '1')
@@ -52,14 +53,14 @@ local PDT = {
             { Name = "Shadow Mantle" }}
 }
 
-layers.Sets.Idle = Default
-layers.Sets.PDT.Idle = PDT
-layers.Sets.MDT.Idle = MDT
+sets.Idle = Default
+sets.PDT.Idle = PDT
+sets.MDT.Idle = MDT
 
-layers.Sets.Staff.Idle = { Main = "Terra's Staff" }
-layers.Sets.Mistilteinn.Idle = { Main = "Mistilteinn", Sub = "Genbu's Shield" }
+sets.Staff.Idle = { Main = "Terra's Staff" }
+sets.Mistilteinn.Idle = { Main = "Mistilteinn", Sub = "Genbu's Shield" }
 
-layers.Sets.Resting = {
+sets.Resting = {
     Main = "Pluto's Staff",
     Ammo = "Dream Sand",
     Head = "Hydra Beret",
@@ -76,18 +77,18 @@ layers.Sets.Resting = {
     Feet = "Hydra Gaiters",
 }
 
-layers.Sets.MDT.Resting = MDT
-layers.Sets.PDT.Resting = PDT
+sets.MDT.Resting = MDT
+sets.PDT.Resting = PDT
 
 -- Interim sets
 
-layers.Sets.Interimcast = Default
-layers.Sets.PDT.Interimcast = PDT
-layers.Sets.MDT.Interimcast = MDT
+sets.Interimcast = Default
+sets.PDT.Interimcast = PDT
+sets.MDT.Interimcast = MDT
 
 -- Precast sets
 
-layers.Sets.Precast = {
+sets.Precast = {
     Ear2 = "Loquac. Earring",
     Feet = "Rostrum Pumps",
     Back = { Name = "Warlock's Mantle", When = "Player Subjob == Red Mage" }
@@ -95,7 +96,7 @@ layers.Sets.Precast = {
 
 -- Midcast sets
 
-layers.Sets.Midcast = {
+sets.Midcast = {
     Ammo = "Dream Sand",
     Head = "Nashira Turban",
     Ear1 = "Novia Earring",
@@ -109,7 +110,7 @@ layers.Sets.Midcast = {
 
 -- Healing
 
-layers.Sets.Midcast.Cure = {
+sets.Midcast.Cure = {
     Main = "Apollo's Staff",
     Ammo = "Dream Sand",
     Head = "Hydra Beret",
@@ -126,7 +127,7 @@ layers.Sets.Midcast.Cure = {
 
 -- Enfeebling
 
-layers.Sets.Midcast.Enfeebling = {
+sets.Midcast.Enfeebling = {
     Ammo = "Phtm. Tathlum",
     Head = "Genie Tiara",
     Neck = "Enfeebling Torque",
@@ -154,7 +155,7 @@ local MndPotency = {
     Waist = "Penitent's Rope",
 }
 
-layers.Sets.Midcast['White Magic Enfeebling'] = {
+sets.Midcast['White Magic Enfeebling'] = {
     Ammo = "Dream Sand",
     Ear2 = "Cmn. Earring",
     Hands = "Dvt. Mitts +1",
@@ -163,10 +164,10 @@ layers.Sets.Midcast['White Magic Enfeebling'] = {
     Waist = "Penitent's Rope",
 }
 
-layers.Sets.Potency.Midcast.Slow = MndPotency
-layers.Sets.Potency.Midcast.Paralyze = MndPotency
+sets.Potency.Midcast.Slow = MndPotency
+sets.Potency.Midcast.Paralyze = MndPotency
 
-layers.Sets.Potency.Midcast.Blind = {
+sets.Potency.Midcast.Blind = {
     Neck = "Prudence Torque",
     Ear1 = "Omn. Earring +1",
     Ear2 = "Abyssal Earring",
@@ -179,7 +180,7 @@ layers.Sets.Potency.Midcast.Blind = {
 
 -- Dark Magic
 
-layers.Sets.Midcast.Dark = {
+sets.Midcast.Dark = {
     Ammo = "Dream Sand",
     Head = "Nashira Turban",
     Neck = "Dark Torque",
@@ -195,21 +196,21 @@ layers.Sets.Midcast.Dark = {
     Feet = "Rostrum Pumps",
 }
 
-layers.Sets.Midcast['Absorption Dark'] = { Ring2 = "Overlord's Ring" }
+sets.Midcast['Absorption Dark'] = { 
+    Main = { Name = "Diabolos's Pole", When = "Weather Element == Dark && ~HighAcc && ~FullAcc" },
+    Ring2 = "Overlord's Ring" 
+}
 
-layers.Sets.Midcast.Stun = {
+sets.Midcast.Stun = {
     Ear1 = "Novia Earring",
     Back = "Errant Cape",
 }
 
-layers.Sets.Enmity.Midcast.Stun = {
+sets.Enmity.Midcast.Stun = {
     Waist = "Penitent's Rope",
     Body = "Hydra Doublet",
     Feet = "Hydra Gaiters",
 }
-
-layers.Sets['Weather Element == Dark && ~HighAcc'].Drain = { Main = "Diabolos's Pole" }
-layers.Sets['Weather Element == Dark && ~HighAcc'].Aspir = { Main = "Diabolos's Pole" }
 
 -- Enchancing
 
@@ -218,15 +219,15 @@ local EnchancingSkill = {
     Back = "Merciful Cape",
 }
 
-layers.Sets.Midcast.Phalanx = EnchancingSkill
-layers.Sets.Midcast.Barspell = EnchancingSkill
+sets.Midcast.Phalanx = EnchancingSkill
+sets.Midcast.Barspell = EnchancingSkill
 
-layers.Sets.Midcast.Sneak = {
+sets.Midcast.Sneak = {
     Back = "Skulker's Cape",
     Feet = "Dream Boots +1",
 }
 
-layers.Sets.Midcast.Invisible = {
+sets.Midcast.Invisible = {
     Hands = "Dream Mittens +1",
     Back = "Skulker's Cape",
 }
@@ -265,26 +266,26 @@ local EnmityDownNuke = {
     Waist = "Penitent's Rope",
 }
 
-layers.Sets.Midcast.Elemental = MaxPotency
-layers.Sets.MB.Midcast.Elemental = BurstGear
-layers.Sets.Enmity.Midcast.Elemental = EnmityDownNuke
+sets.Midcast.Elemental = MaxPotency
+sets.MB.Midcast.Elemental = BurstGear
+sets.Enmity.Midcast.Elemental = EnmityDownNuke
 
-layers.Sets.LowAcc.Midcast.Elemental = {
+sets.LowAcc.Midcast.Elemental = {
     Hands = "Wzd. Gloves +1",
 }
 
-layers.Sets.MidAcc.Midcast.Elemental = {
+sets.MidAcc.Midcast.Elemental = {
     Head = "Src. Petasos +1",
     Hands = "Wzd. Gloves +1",
 }
 
-layers.Sets.HighAcc.Midcast.Elemental = {
+sets.HighAcc.Midcast.Elemental = {
     Head = "Src. Petasos +1",
     Hands = "Wzd. Gloves +1",
     Neck = "Elemental Torque",
 }
 
-layers.Sets.FullAcc.Midcast.Elemental = {
+sets.FullAcc.Midcast.Elemental = {
     Head = "Src. Petasos +1",
     Neck = "Elemental Torque",
     Hands = "Wzd. Gloves +1",
@@ -294,7 +295,7 @@ layers.Sets.FullAcc.Midcast.Elemental = {
 
 -- Ele Dots
 
-layers.Sets.Midcast['Enfeebling Elemental'] = {
+sets.Midcast['Enfeebling Elemental'] = {
     Ammo = "Phtm. Tathlum",
     Neck = "Prudence Torque",
     Head = "Wzd. Petasos +1",
@@ -310,7 +311,7 @@ layers.Sets.Midcast['Enfeebling Elemental'] = {
     Feet = "Src. Sabots +1",
 }
 
-layers.Sets.Enmity.Midcast['Enfeebling Elemental'] = layers.Sets.Midcast['Enfeebling Elemental']
+sets.Enmity.Midcast['Enfeebling Elemental'] = sets.Midcast['Enfeebling Elemental']
 
 -- Obis
 
@@ -326,17 +327,17 @@ layers.Sets['Environment Score > 0'].Midcast['Dark Affinity'] = { Waist = "Anrin
 
 -- Staves
 
-layers.Sets.Midcast['Earth Magic Damage'] = { Main = "Terra's Staff" }
-layers.Sets.Midcast['Earth Enfeeblement'] = { Main = "Terra's Staff" }
-layers.Sets.Midcast['Lightning Magic Damage'] = { Main = "Jupiter's Staff" }
-layers.Sets.Midcast['Water Magic Damage'] = { Main = "Neptune's Staff" }
-layers.Sets.Midcast['Water Enfeeblement'] = { Main = "Neptune's Staff" }
-layers.Sets.Midcast['Fire Magic Damage'] = { Main = "Vulcan's Staff" }
-layers.Sets.Midcast['Ice Magic Damage'] = { Main = "Aquilo's Staff" }
-layers.Sets.Midcast['Ice Enfeeblement'] = { Main = "Aquilo's Staff" }
-layers.Sets.Midcast['Wind Magic Damage'] = { Main = "Auster's Staff" }
-layers.Sets.Midcast['Wind Enfeeblement'] = { Main = "Auster's Staff" }
-layers.Sets.Midcast['Dark Affinity'] = { Main = "Pluto's Staff" }
+sets.Midcast['Earth Magic Damage'] = { Main = "Terra's Staff" }
+sets.Midcast['Earth Enfeeblement'] = { Main = "Terra's Staff" }
+sets.Midcast['Lightning Magic Damage'] = { Main = "Jupiter's Staff" }
+sets.Midcast['Water Magic Damage'] = { Main = "Neptune's Staff" }
+sets.Midcast['Water Enfeeblement'] = { Main = "Neptune's Staff" }
+sets.Midcast['Fire Magic Damage'] = { Main = "Vulcan's Staff" }
+sets.Midcast['Ice Magic Damage'] = { Main = "Aquilo's Staff" }
+sets.Midcast['Ice Enfeeblement'] = { Main = "Aquilo's Staff" }
+sets.Midcast['Wind Magic Damage'] = { Main = "Auster's Staff" }
+sets.Midcast['Wind Enfeeblement'] = { Main = "Auster's Staff" }
+sets.Midcast['Dark Affinity'] = { Main = "Pluto's Staff" }
 
 -- Sorc Ring Helper
 
