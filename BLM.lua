@@ -13,7 +13,8 @@ local weapons = layers.CreateModeGroup('Weapon', {'Staff','Mistilteinn'})
 -- Idle Sets
 
 local Default = {
-    Ammo = "Happy Egg",
+    Ammo = {{ Name = "Happy Egg", When = "~SorcRing || Player MP < 900"},
+            { Name = "Dream Sand"}},
     Head = "Dream Ribbon",
     Neck = "Jeweled Collar +1",
     Ear1 = "Sorcerer's Earring",
@@ -24,7 +25,8 @@ local Default = {
     Ring2 = "Shadow Ring",
     Back = {{ Name = "Umbra Cape", When = "Nighttime && ~MDT"},
             { Name = "Shadow Mantle" }},
-    Waist = "Steppe Sash",
+    Waist = {{ Name = "Steppe Sash", When = "~SorcRing || Player MP < 900"},
+             { Name = "Hierarch Belt"}},
     Legs = "Src. Tonban +1",
     Feet = "Src. Sabots +1",
 }
@@ -50,7 +52,15 @@ local PDT = {
     Ring1 = "Sattva Ring",
     Ring2 = "Jelly Ring",
     Back = {{ Name = "Umbra Cape", When = "Nighttime" },
-            { Name = "Shadow Mantle" }}
+            { Name = "Shadow Mantle" }},
+    Waist = "Steppe Sash",
+}
+
+local MP = {
+    Ammo = { Name = "Dream Sand", Priority = 100 },
+    Ear2 = { Name = "Loquac. Earring", Priority = 100 },
+    Back = { Name = "Errant Cape", Priority = 100 },
+    Waist = { Name = "Hierarch Belt", Priority = 100 }
 }
 
 sets.Idle = Default
@@ -67,7 +77,8 @@ sets.Resting = {
     Neck = "Uggalepih Pendant",
     Ear1 = "Relaxing Earring",
     Ear2 = "Loquac. Earring",
-    Body = "Mahatma Hpl.",
+    Body = {{ Name = "Dalmatica", When = "Player MP >= 1000" },
+            { Name = "Mahatma Hpl." }},
     Hands = "Zenith Mitts",
     Ring1 = "Sattva Ring",
     Ring2 = "Shadow Ring",
@@ -230,6 +241,20 @@ sets.Midcast.Sneak = {
 sets.Midcast.Invisible = {
     Hands = "Dream Mittens +1",
     Back = "Skulker's Cape",
+}
+
+sets.Midcast.Stoneskin = {
+    Head = "Zenith Crown",
+    Neck = "Stone Gorget",
+    Body = "Mahatma Hpl.",
+    Ear1 = "Cmn. Earring",
+    Ear2 = "Cmn. Earring",
+    Hands = "Dvt. Mitts +1",
+    Ring1 = "Aqua Ring",
+    Ring2 = "Aqua Ring",
+    Back = "Prism Cape",
+    Waist = "Penitent's Rope",
+    Legs = "Mahatma Slops",
 }
 
 -- Elemental magic
