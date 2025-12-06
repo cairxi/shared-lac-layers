@@ -28,9 +28,9 @@ local MuscleBeltHP = 510
 
 local ShinobiRingPredicate = ('Player HP < %d'):format(ShinboRingHP)
 local ShinobiEarringPredicate = ('Player HP < %d'):format(ShinobiEarringHP)
-local DreamRibbonPredicate = ("Regen || (Buffalo && Player HP < %d)"):format(ShinobiEarringHP)
-local MuscleBeltPredicate = ("Regen && Player HP < %d || (Buffalo && Player HP < %d)"):format(MuscleBeltHP, ShinobiEarringHP)
-local RefreshPredicate = 'Player MP < 42 && ~(Player Status Effect == plague)'
+local DreamRibbonPredicate = ("Regen || (Buffalo && Player HP < %d)"):format(ShinobiEarringHP - 3)
+local MuscleBeltPredicate = ("Regen && Player HP < %d || (Buffalo && Player HP < %d)"):format(MuscleBeltHP, ShinobiEarringHP - 3)
+local RefreshPredicate = 'Player MP < 41 && ~(Player Status Effect == plague)'
 
 sets.Idle = {
     Ammo = "Happy Egg",
@@ -436,7 +436,7 @@ local TankEnmity = {
     Feet = "Ysh. Sune-ate +1",
 }
 
-local PlayerNamePredicate = ("Action Target Name == %s"):format(gData.GetPlayer().Name)
+local PlayerNamePredicate = "Action Target Name == Cair"
 
 local TankCure = {
     Main = "Apollo's Staff",
