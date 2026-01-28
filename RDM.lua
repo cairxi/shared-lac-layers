@@ -12,8 +12,8 @@ local pdt = layers.CreateModeGroup('PDT', {'Off', 'PDT'}, '2')
 local mdt = layers.CreateModeGroup('MDT', {'Off', 'MDT'}, '1')
 local bdt = layers.CreateModeGroup('BDT', {'Off', 'BDT'}, '3')
 local mp = layers.CreateModeGroup('MP', {'Off', 'MP'}, '5')
-local hp = layers.CreateModeGroup('HP', {'Off', 'HP'}, '4')
 local tank = layers.CreateModeGroup('Tank', {'Off', 'Tank'}, '+t')
+local hp = layers.CreateModeGroup('HP', {'Off', 'HP'}, '4')
 local cast_style = layers.CreateModeGroup('Cast Style', {'Off','Potency','Accuracy'}, '+1')
 local dart = layers.CreateModeGroup('Dart', {'Off','Dart'})
 
@@ -80,7 +80,7 @@ local HP = {
 
 local MP = {
     Ammo = { Name = "Dream Sand", Priority = 100 },
-    Ear1 = { Name = "Loquac. Earring", Priority = 100 },
+    Ear2 = { Name = "Loquac. Earring", Priority = 100 },
     Waist = { Name = "Hierarch Belt", Priority = 100 },
 }
 
@@ -105,7 +105,7 @@ sets.IdleHP.Idle = {
 
 sets.IdleMP.Idle = {
     Ammo = "Dream Sand",
-    Ear1 = "Loquac. Earring",
+    Ear2 = "Loquac. Earring",
     Hands = "Blood Fng. Gnt.",
     Neck = "Uggalepih Pendant",
     Waist = "Hierarch Belt",
@@ -128,8 +128,8 @@ sets.Lightning.Idle = {
 sets.Resting = {
     Head = "Dls. Chapeau +1",
     Neck = "Checkered Scarf",
-    Ear1 = "Loquac. Earring",
-    Ear2 = "Relaxing Earring",
+    Ear1 = "Relaxing Earring",
+    Ear2 = "Loquac. Earring",
     Body = {{ Name = "Dalmatica", When = "Player MP >= 900" },
             { Name = "Mahatma Hpl." }},
     Hands = {{ Name = "Blood Fng. Gnt.", When = "Player MP >= 850" },
@@ -223,14 +223,12 @@ sets.IdleMDT.Interimcast = sets.IdleMDT.Idle
 sets.IdlePDT.Interimcast = sets.IdlePDT.Idle
 sets.Refresh.Interimcast = sets.Refresh.Idle
 
-
-
 -- Precast Sets
 
 sets.Precast = {
     Head = "Wlk. Chapeau +1",
     Body = "Dls. Tabard +1",
-    Ear1 = "Loquac. Earring",
+    Ear2 = "Loquac. Earring",
 }
 
 sets.HP.Precast = {
@@ -247,10 +245,11 @@ sets.HP.Precast = {
 
 sets.Midcast = {
     Head = "Wlk. Chapeau +1",
-    Ear1 = "Loquac. Earring",
+    Ear2 = "Loquac. Earring",
     Body = "Dls. Tabard +1",
     Hands = "Dusk Gloves",
-    Waist = "Swift Belt",
+    Waist = {{ Name = "Hierarch Belt", When = "Player MP >= 800", Priority = 100 },
+             { Name = "Swift Belt" }},
     Back = "Errant Cape",
     Legs = "Nashira Seraweels",
 }
@@ -266,12 +265,14 @@ sets.Midcast.Cure = {
     Ammo = "Dream Sand",
     Head = "Hydra Beret",
     Ear1 = "Novia Earring",
+    Ear2 = "Loquac. Earring",
     Body = "Dls. Tabard +1",
     Hands = "Hydra Gloves",
     Ring1 = "Bloodbead Ring",
     Ring2 = "Shadow Ring",
     Back = "Errant Cape",
-    Waist = "Penitent's Rope",
+    Waist = {{ Name = "Hierarch Belt", When = "Player MP >= 800", Priority = 100 },
+             { Name = "Penitent's Rope" }},
     Legs = "Mahatma Slops",
     Feet = "Hydra Gaiters",
 }
@@ -404,8 +405,8 @@ sets.Midcast.Dark = {
     Ammo = "Phtm. Tathlum",
     Head = "Wlk. Chapeau +1",
     Neck = "Dark Torque",
-    Ear1 = "Loquac. Earring",
-    Ear2 = "Abyssal Earring",
+    Ear1 = "Abyssal Earring",
+    Ear2 = "Loquac. Earring",
     Body = "Nashira Manteel",
     Hands = "Blood Fng. Gnt.",
     Ring1 = "Omniscient Ring",
@@ -504,7 +505,7 @@ local HighRecast = {
     Feet = "Dst. Leggings +1"
 }
 
-local PlayerNamePredicate = ("Action Target Name == %s"):format(gData.GetPlayer().Name)
+local PlayerNamePredicate = "Action Target Name == Cair"
 
 sets.Tank.Midcast.Cure = {
     Main = "Apollo's Staff",

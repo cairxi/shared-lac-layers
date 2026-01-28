@@ -429,10 +429,10 @@ end, "Midcast Mid Delay")
 
 local lockstyle = {
     Main = "Levin",
-    Head = "Hydra Beret",
+    Head = "Korrigan Beret",
     Body = "Dalmatica",
     Hands = "Src. Gloves +1",
-    Legs = "Nashira Seraweels",
+    Legs = "Src. Tonban +1",
     Feet = "Src. Sabots +1",
 }
 

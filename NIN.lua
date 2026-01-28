@@ -23,7 +23,7 @@ AshitaCore:GetChatManager():QueueCommand(-1,'/macro book 4')
 -- HP/MP Based Predicates, can make this more advanced based on SJ etc
 
 local ShinobiEarringHP = 251
-local ShinboRingHP = 890
+local ShinboRingHP = 810
 local MuscleBeltHP = 510
 
 local ShinobiRingPredicate = ('Player HP < %d'):format(ShinboRingHP)
@@ -50,12 +50,14 @@ sets.Idle = {
     Feet = "Dst. Leggings +1",
 }
 
-sets.Staff.Engaged = sets.Idle
 sets.Kite.Idle = { Feet = { Name = "Nin. Kyahan +1", When = "Dusk to Dawn" }}
 sets.Refresh.Idle = { Body = { Name = "Blue Cotehardie", When = RefreshPredicate }}
 sets.Buffalo.Idle = { Body = { Name = "Blue Cotehardie", When = RefreshPredicate }}
 sets.Staff.Idle = { Main = "Terra's Staff" }
 sets.Katana.Idle = { Main = "Fudo", Sub = "Fudo" }
+sets.Engaged = sets.Idle
+sets.Staff.Engaged = sets.Staff.Idle
+sets.Katana.Engaged = sets.Katana.Idle
 sets.Club.Idle = { Sub = "Octave Club" }
 
 local Evasion = {
@@ -482,17 +484,17 @@ layers.Sets['Environment Score > 0 && ~HP'].Midcast['Dark Affinity'] = { Waist =
 
 -- Staves
 
-sets.Midcast['Earth Magic Damage'] = { Main = "Terra's Staff" }
-sets.Midcast['Earth Enfeeblement'] = { Main = "Terra's Staff" }
-sets.Midcast['Lightning Magic Damage'] = { Main = "Jupiter's Staff" }
-sets.Midcast['Water Magic Damage'] = { Main = "Neptune's Staff" }
-sets.Midcast['Water Enfeeblement'] = { Main = "Neptune's Staff" }
-sets.Midcast['Fire Magic Damage'] = { Main = "Vulcan's Staff" }
-sets.Midcast['Ice Magic Damage'] = { Main = "Aquilo's Staff" }
-sets.Midcast['Ice Enfeeblement'] = { Main = "Aquilo's Staff" }
-sets.Midcast['Wind Magic Damage'] = { Main = "Auster's Staff" }
-sets.Midcast['Wind Enfeeblement'] = { Main = "Auster's Staff" }
-sets.Midcast['Dark Affinity'] = { Main = "Pluto's Staff" }
+sets.Staff.Midcast['Earth Magic Damage'] = { Main = "Terra's Staff" }
+sets.Staff.Midcast['Earth Enfeeblement'] = { Main = "Terra's Staff" }
+sets.Staff.Midcast['Lightning Magic Damage'] = { Main = "Jupiter's Staff" }
+sets.Staff.Midcast['Water Magic Damage'] = { Main = "Neptune's Staff" }
+sets.Staff.Midcast['Water Enfeeblement'] = { Main = "Neptune's Staff" }
+sets.Staff.Midcast['Fire Magic Damage'] = { Main = "Vulcan's Staff" }
+sets.Staff.Midcast['Ice Magic Damage'] = { Main = "Aquilo's Staff" }
+sets.Staff.Midcast['Ice Enfeeblement'] = { Main = "Aquilo's Staff" }
+sets.Staff.Midcast['Wind Magic Damage'] = { Main = "Auster's Staff" }
+sets.Staff.Midcast['Wind Enfeeblement'] = { Main = "Auster's Staff" }
+sets.Staff.Midcast['Dark Affinity'] = { Main = "Pluto's Staff" }
 
 
 -- Interim cast delay
