@@ -496,35 +496,7 @@ sets.Staff.Midcast['Wind Magic Damage'] = { Main = "Auster's Staff" }
 sets.Staff.Midcast['Wind Enfeeblement'] = { Main = "Auster's Staff" }
 sets.Staff.Midcast['Dark Affinity'] = { Main = "Pluto's Staff" }
 
-
--- Interim cast delay
-
-layers.RegisterCallback("PreHandleMidcast", function(spell)
-
-    local player = gData.GetPlayer()
-    local fastCastValue = .99
-    if player.SubJob == 'RDM' then
-        fastCastValue = fastCastValue - .21
-    end
-
-    local buffer = 0.25
-    local packetDelay = 0.25
-    local castDelay = (spell.CastTime * fastCastValue) / 1000 - buffer
-    if castDelay >= packetDelay then
-        gFunc.SetMidDelay(castDelay)
-    end
-end, "Midcast Mid Delay")
-
--- Sticky items
-
-local charged = {
-    "Reraise Hairpin","Reraise Earring",
-    "Warp Cudgel","Treat Staff II",
-    "Chariot Band",
-    "Dem Ring","Altep Ring","Tavnazian Ring",
-    "Powder Boots",
-}
-
-for _,v in pairs(charged) do layers.AddChargedItem(v) end
+layers.EnableAutomaticMidcastDelay()
+layers.EnableDefaultStickyItems()
 
 return layers

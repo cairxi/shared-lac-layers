@@ -406,26 +406,8 @@ layers.RegisterCallback("PreHandlePrecast", function(spell)
     end
 end, "Sorc. Ring HP Helper")
 
--- Interim cast delay
-
-layers.RegisterCallback("PreHandleMidcast", function(spell)
-    local player = gData.GetPlayer()
-    local fastCastValue = .99
-
-    if player.SubJob == 'RDM' then
-        fastCastValue = fastCastValue - .21
-    end
-
-    local buffer = 0.25
-    local packetDelay = 0.25
-    local castDelay = (spell.CastTime * fastCastValue) / 1000 - buffer
-    
-    if castDelay >= packetDelay then
-        gFunc.SetMidDelay(castDelay)
-    end
-end, "Midcast Mid Delay")
-
--- Mog helper
+layers.EnableAutomaticMidcastDelay()
+layers.EnableDefaultStickyItems()
 
 local lockstyle = {
     Main = "Levin",
@@ -441,16 +423,5 @@ layers.UserOnLoad = function()
     gFunc.LockStyle(lockstyle)
     AshitaCore:GetChatManager():QueueCommand(-1,'/macro book 1')
 end
-
--- Sticky items
-
-local charged = {
-    "Reraise Hairpin","Reraise Earring",
-    "Warp Cudgel","Treat Staff II",
-    "Chariot Band",
-    "Dem Ring","Altep Ring","Tavnazian Ring",
-}
-
-for _,v in pairs(charged) do layers.AddChargedItem(v) end
 
 return layers

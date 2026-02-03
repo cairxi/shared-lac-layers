@@ -561,7 +561,6 @@ sets.Staff.Midcast['Wind Magic Damage'] = { Main = "Auster's Staff" }
 sets.Staff.Midcast['Wind Enfeeblement'] = { Main = "Auster's Staff" }
 sets.Staff.Midcast['Dark Affinity'] = { Main = "Pluto's Staff" }
 
-
 -- Cure cheat logic
 
 local CureThresholds = {
@@ -603,16 +602,8 @@ layers.RegisterCallback("PreHandlePrecast", function(spell)
 end, "Cure Cheat Helper")
 
 -- Interim cast delay
-
-layers.RegisterCallback("PreHandleMidcast", function(spell)
-    local fastCastValue = 0.42
-    local minimumBuffer = 0.25
-    local packetDelay = 0.4
-    local castDelay = ((spell.CastTime * (1 - fastCastValue)) / 1000) - minimumBuffer
-    if (castDelay >= packetDelay) and (gData.GetBuffCount('Chainspell') == 0) then
-        gFunc.SetMidDelay(castDelay)
-    end
-end, "Midcast Mid Delay")
+layers.EnableAutomaticMidcastDelay()
+layers.EnableDefaultStickyItems()
 
 local lockstyle = {
     Main = "Levin",
@@ -628,17 +619,5 @@ layers.UserOnLoad = function()
     gFunc.LockStyle(lockstyle)
     AshitaCore:GetChatManager():QueueCommand(-1,'/macro book 2')
 end
-
--- Sticky items
-
-local ChargedItems = {
-    "Reraise Hairpin","Reraise Earring",
-    "Warp Cudgel","Treat Staff II",
-    "Chariot Band",
-    "Dem Ring","Altep Ring","Tavnazian Ring",
-    "Powder Boots",
-}
-
-for _,v in pairs(ChargedItems) do layers.AddChargedItem(v) end
 
 return layers
