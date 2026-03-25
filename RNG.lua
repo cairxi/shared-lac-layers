@@ -14,6 +14,7 @@ local melee = layers.CreateModeGroup('Melee', {'Off', 'Melee'}, '+m')
 local resists = layers.CreateModeGroup('Resist', {'Off','Lightning'},'+r')
 local mdt = layers.CreateModeGroup('MDT', {'Off', 'MDT'}, '1')
 local pdt = layers.CreateModeGroup('PDT', {'Off', 'PDT'}, '2')
+local pdt = layers.CreateModeGroup('HP', {'Off', 'HP'}, '3')
 local weapon = layers.CreateModeGroup('Weapon', {'Vulcan','Terra','Club', 'Dagger'},'m')
 local acc = layers.CreateModeGroup('Accuracy', {'Accuracy','Off'},'+1')
 local enmity = layers.CreateModeGroup('Enmity', {'Off','Enmity'},'i')
@@ -61,15 +62,28 @@ local MDT = {
     Feet = "Coral Greaves +1",
 }
 
+local HP = {
+    Head = "Genbu's Kabuto",
+    Ear1 = "Cassie Earring",
+    Ear2 = "Ethereal Earring",
+    Hands = "Seiryu's Kote",
+    Ring1 = "Sattva Ring",
+    Ring2 = "Bomb Queen Ring",
+    Back = "Gigant Mantle",
+    Waist = "Steppe Sash",
+    Feet = "Creek M Clomps",
+}
+
 local Lightning = {
-    Head = "Dream Ribbon",
+    Head = {{ Name = "Dream Ribbon", When = "Lightning Environment Score < 2" },
+            { Name = "Black Ribbon"}},
     Neck = "Jeweled Collar +1",
     Ear1 = "Robust Earring +1",
     Ear2 = "Robust Earring +1",
     Body = "Kirin's Osode",
     Hands = "Merman's Bangles",
     Ring1 = "Adroit Ring",
-    Ring2 = "Adroit Ring",
+    Ring2 = "Shadow Ring",
     Back = {{ Name = "Resentment Cape", When = "Outside Nation Control" },
             { Name = "Shadow Mantle" }},
     Waist = "Earth Belt",
@@ -81,12 +95,13 @@ sets.Club.Idle = { Main = "Octave Club" }
 sets.Vulcan.Idle = { Main = "Vulcan's Staff" }
 sets.Terra.Idle = { Main = "Terra's Staff" }
 sets.Dagger.Idle = { Main = "Hawker's Knife +1", Sub = { Name = "Hawker's Knife +1", When = "Player Subjob == Ninja" }} 
-sets.Crossbow.Idle = { Range = "Othinus' Bow", Ammo = "Remove" }
-sets.Gun.Idle = { Range = "Annihilator", Ammo = "Remove" }
+sets.Crossbow.Idle = { Range = "Othinus' Bow" }
+sets.Gun.Idle = { Range = "Annihilator" }
 
 sets.Idle = Default
 sets.PDT.Idle = PDT
 sets.MDT.Idle = MDT
+sets.HP.Idle = HP
 sets.Lightning.Idle = Lightning
 
 sets.Engaged = Default
@@ -141,7 +156,7 @@ sets.Crossbow.Preshot = {
 }
 
 sets.Gun.Preshot = {
-    Ammo = {{ Name = "Bronze Bullet", When = "Bronze" },
+    Ammo = {{ Name = "Bronze Bullet", When = "Bronze && ~(Player Status Effect == Aftermath)" },
             { Name = "Silver Bullet" }}
 }
 
@@ -224,8 +239,7 @@ sets.Gun.Weaponskill = {
 sets.Accuracy.Weaponskill = { 
     Head = { Name = "War Beret +1", When = function() return AccItems.WS.Head end },       -- 9
     Body = { Name = "Htr. Jerkin +1", When = function() return AccItems.WS.Body end },     -- 7
-    Hands = {{ Name = "Htr. Bracers +1", When = "Player Status Effect == Barrage" },
-             { Name = "Seiryu's Kote", When = function() return AccItems.WS.Hands end }},  -- 6.5
+    Hands = {Name = "Seiryu's Kote", When = function() return AccItems.WS.Hands end },     -- 6.5
     Ring1 = { Name = "Merman's Ring", When = function() return AccItems.WS.Ring1 end},     -- 10
     Ring2 = { Name = "Merman's Ring", When = function() return AccItems.WS.Ring2 end},     -- 10
     Back = { Name = "Jaeger Mantle", When = function() return AccItems.WS.Back end},       -- 20
