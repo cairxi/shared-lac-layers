@@ -239,7 +239,7 @@ sets.Gun.Weaponskill = {
 sets.Accuracy.Weaponskill = { 
     Head = { Name = "War Beret +1", When = function() return AccItems.WS.Head end },       -- 9
     Body = { Name = "Htr. Jerkin +1", When = function() return AccItems.WS.Body end },     -- 7
-    Hands = {Name = "Seiryu's Kote", When = function() return AccItems.WS.Hands end },     -- 6.5
+    Hands = { Name = "Seiryu's Kote", When = function() return AccItems.WS.Hands end },     -- 6.5
     Ring1 = { Name = "Merman's Ring", When = function() return AccItems.WS.Ring1 end},     -- 10
     Ring2 = { Name = "Merman's Ring", When = function() return AccItems.WS.Ring2 end},     -- 10
     Back = { Name = "Jaeger Mantle", When = function() return AccItems.WS.Back end},       -- 20
